@@ -6,6 +6,7 @@ const Navbar = () => {
     { name: "Home", path: "/" },
     { name: "All Classes", path: "/classes" },
     { name: "Teach on Spark Academy", path: "/teach" },
+    { name: "Dashboard", path: "/dashboard" },
     { name: "Sign In", path: "/signin" },
     { name: "Sign Up", path: "/signup" },
   ];

@@ -1,8 +1,9 @@
+import AllClasses from "../components/AllClasses";
 
 const Home = () => {
     return (
         <div className='container mx-auto'>
-            <h3>Home page</h3>
+            <AllClasses></AllClasses>
         </div>
     );
 };
