@@ -1,8 +1,7 @@
-import React from 'react';
 
 const Home = () => {
     return (
-        <div>
+        <div className='container mx-auto'>
             <h3>Home page</h3>
         </div>
     );

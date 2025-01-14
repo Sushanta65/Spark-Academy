@@ -1,40 +1,37 @@
-import React from 'react';
-import { NavLink } from 'react-router-dom';
+import React from "react";
+import { NavLink } from "react-router-dom";
 
 const Navbar = () => {
   const links = [
-    { name: 'Home', path: '/' },
-    { name: 'All Classes', path: '/classes' },
-    { name: 'Teach on Spark Academy', path: '/teach' },
-    { name: 'Sign In', path: '/signin' },
+    { name: "Home", path: "/" },
+    { name: "All Classes", path: "/classes" },
+    { name: "Teach on Spark Academy", path: "/teach" },
+    { name: "Sign In", path: "/signin" },
+    { name: "Sign Up", path: "/signup" },
   ];
 
   return (
     <div className="navbar bg-white shadow-md w-full">
       <div className="container mx-auto flex justify-between items-center">
-        
         <div className="flex items-center">
           {/* <img
             src="/logo.png"
             alt="Spark Academy Logo"
             className="h-10 w-10 mr-2"
           /> */}
-          <span className="text-xl font-bold text-teal-600">
-            Spark Academy
-          </span>
+          <span className="text-xl font-bold text-teal-600">Spark Academy</span>
         </div>
 
-       
         <div className="hidden lg:flex">
           <ul className="menu menu-horizontal px-1 gap-3">
             {links.map((link) => (
-              <li key={link.path} className='text-[13px]'>
+              <li key={link.path} className="text-[13px]">
                 <NavLink
                   to={link.path}
                   className={({ isActive }) =>
                     isActive
-                      ? 'text-white bg-teal-600 rounded-lg px-4 py-2'
-                      : 'text-gray-700 hover:bg-teal-600 hover:text-white rounded-lg px-4 py-2 duration-500'
+                      ? "text-white bg-teal-600 rounded-lg px-4 py-2"
+                      : "text-gray-700 hover:bg-teal-600 hover:text-white rounded-lg px-4 py-2 duration-500"
                   }
                 >
                   {link.name}
@@ -44,7 +41,6 @@ const Navbar = () => {
           </ul>
         </div>
 
-      
         <div className="dropdown lg:hidden">
           <label tabIndex={0} className="btn btn-ghost lg:hidden">
             <svg
@@ -72,8 +68,8 @@ const Navbar = () => {
                   to={link.path}
                   className={({ isActive }) =>
                     isActive
-                      ? 'text-white bg-teal-600 hover:bg-teal-600 rounded-lg px-4 py-2'
-                      : 'text-gray-700 hover:bg-teal-600 hover:text-white rounded-lg px-4 py-2'
+                      ? "text-white bg-teal-600 hover:bg-teal-600 rounded-lg px-4 py-2"
+                      : "text-gray-700 hover:bg-teal-600 hover:text-white rounded-lg px-4 py-2"
                   }
                 >
                   {link.name}
