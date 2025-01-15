@@ -1,7 +1,9 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
+import useAuth from '../hooks/useAuth';
 
 const Signup = () => {
+  const {signUpUser} = useAuth()
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -16,7 +18,8 @@ const Signup = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log('Form submitted:', formData);
+    const {email, password, name, photoURL} = formData;
+    signUpUser(email, password, name, photoURL)
 };
 
   const handleGoogleSignIn = () => {
