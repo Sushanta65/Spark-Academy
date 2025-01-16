@@ -7,6 +7,7 @@ import Dashboard from "../Pages/Dashboard";
 import AllClasses from "../Pages/DashboardPages/AllClasses";
 import Classes from "../components/Classes";
 import PrivateRoute from "./PrivateRoute";
+import Users from "../Pages/DashboardPages/Users";
 
 
 const router = createBrowserRouter([
@@ -33,6 +34,10 @@ const router = createBrowserRouter([
                     {
                         path: '/dashboard/all-classes',
                         element: <AllClasses></AllClasses>
+                    },
+                    {
+                        path: '/dashboard/users',
+                        element: <Users/>
                     }
                 ]
             },
