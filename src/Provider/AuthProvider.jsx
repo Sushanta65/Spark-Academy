@@ -1,4 +1,4 @@
-import { createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword, updateProfile } from 'firebase/auth';
+import { createUserWithEmailAndPassword, GoogleAuthProvider, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut, updateProfile } from 'firebase/auth';
 import React, { createContext, useEffect, useState } from 'react';
 import { auth } from '../../firebase.init';
 import Swal from 'sweetalert2';
@@ -10,74 +10,72 @@ const AuthProvider = ({children}) => {
     const [user, setUser] = useState([])
     const [loading, setLoading] = useState(true)
 
+    const provider = new GoogleAuthProvider;
 
-    const signUpUser = (email, password, name, photoURL) => {
+    const signUpUser = (email, password) => {
         setLoading(true)
-        createUserWithEmailAndPassword(auth, email, password)
+        return createUserWithEmailAndPassword(auth, email, password)
+    }
+
+
+    const signInUser = (email, password) => {
+        setLoading(true)
+        return signInWithEmailAndPassword(auth, email, password)
+    }
+
+
+    const googleSignIn = () => {
+        signInWithPopup(auth, provider)
         .then(data => {
-            updateProfile(auth.currentUser, {
-                displayName: name,
-                photoURL
-            })
-            .then(() => {
-                Swal.fire({
-                    position: "middle-center",
-                    icon: "success",
-                    title: "SignUp Successfull.",
-                    showConfirmButton: false,
-                    timer: 2000
-                  });
-            })
             setUser(data.user)
-            setLoading(false)
-        })
+            Swal.fire({
+                position: "middle-center",
+                icon: "success",
+                title: "Google SignIn Successfull.",
+                showConfirmButton: false,
+                timer: 2000
+              });
+        }) 
         .catch(error => {
-            let errorMessage;
-            console.log(error.message)
-            if(error.message === 'Firebase: Error (auth/email-already-in-use).'){
-                errorMessage = 'This Email Used in Another Account.'
-            }else{
-                errorMessage = "Something Went Wrong"
-            }
             Swal.fire({
                 icon: "error",
                 title: "Oops...",
-                text:  `${errorMessage}`,
+                text:  `${error.message}`,
                 footer: 'Try to use another email'
               });
         })
     }
 
 
-    const signInUser = (email, password) => {
-        setLoading(true)
-        signInWithEmailAndPassword(auth, email, password)
-        .then(data => {
-            setLoading(false)
-            setUser(data.user)
+    const signOutUser = () => {
+        signOut(auth)
+        .then(() => {
             Swal.fire({
                 position: "middle-center",
                 icon: "success",
-                title: "SignIn Successfull.",
+                title: "Logout Successfull.",
                 showConfirmButton: false,
                 timer: 2000
               });
         })
     }
 
-
     const authInfo = {
         signUpUser,
         signInUser,
+        googleSignIn,
+        signOutUser,
         setUser,
         user,
+        setLoading,
+        loading,
     }
 
     useEffect(() => {
         setLoading(true)
-        const unsubsribe = onAuthStateChanged(auth, (user) => {
-            setUser(user)
-            console.log(user)
+        const unsubsribe = onAuthStateChanged(auth, (currentUser) => {
+            setUser(currentUser)
+            console.log(currentUser)
             setLoading(false)
         })
         return (() => {

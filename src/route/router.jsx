@@ -5,6 +5,8 @@ import SignUp from "../Pages/SignUp";
 import SignIn from "../Pages/SignIn";
 import Dashboard from "../Pages/Dashboard";
 import AllClasses from "../Pages/DashboardPages/AllClasses";
+import Classes from "../components/Classes";
+import PrivateRoute from "./PrivateRoute";
 
 
 const router = createBrowserRouter([
@@ -26,13 +28,17 @@ const router = createBrowserRouter([
             },
             {
                 path: '/dashboard',
-                element: <Dashboard></Dashboard>,
+                element: <PrivateRoute><Dashboard></Dashboard></PrivateRoute>,
                 children: [
                     {
                         path: '/dashboard/all-classes',
                         element: <AllClasses></AllClasses>
                     }
                 ]
+            },
+            {
+                path: '/classes',
+                element: <Classes></Classes>
             }
         ]
     }

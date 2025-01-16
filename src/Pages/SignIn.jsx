@@ -1,13 +1,18 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import useAuth from '../hooks/useAuth';
+import Swal from 'sweetalert2';
 
 const SignIn = () => {
-  const {signInUser} = useAuth()
+  const {signInUser, googleSignIn, setLoading, setUser} = useAuth()
   const [formData, setFormData] = useState({
     email: '',
     password: '',
   });
+const navigate = useNavigate()
+const location = useLocation()
+
+
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -18,11 +23,29 @@ const SignIn = () => {
     e.preventDefault();
     const {email, password} = formData;
     signInUser(email, password)
+    .then(data => {
+                setLoading(false)
+                setUser(data.user)
+                Swal.fire({
+                    position: "middle-center",
+                    icon: "success",
+                    title: "SignIn Successfull.",
+                    showConfirmButton: false,
+                    timer: 2000
+                  });
+            })
+            .catch(error => {
+                Swal.fire({
+                    icon: "error",
+                    title: "Oops...",
+                    text:  `${error.message}`,
+                    footer: 'Try to use another email'
+                  });
+            })
   };
 
   const handleGoogleSignIn = () => {
-    console.log('Google Sign-In clicked');
-
+    googleSignIn()
   };
 
   return (

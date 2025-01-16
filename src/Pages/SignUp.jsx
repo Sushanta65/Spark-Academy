@@ -1,14 +1,17 @@
-import { useState } from 'react';
-import { Link } from 'react-router-dom';
-import useAuth from '../hooks/useAuth';
+import { useState } from "react";
+import { Link } from "react-router-dom";
+import useAuth from "../hooks/useAuth";
+import Swal from "sweetalert2";
+import { updateProfile } from "firebase/auth";
+import { auth } from "../../firebase.init";
 
 const Signup = () => {
-  const {signUpUser} = useAuth()
+  const { signUpUser, googleSignIn, setUser, setLoading } = useAuth();
   const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    password: '',
-    photoURL: '',
+    name: "",
+    email: "",
+    password: "",
+    photoURL: "",
   });
 
   const handleChange = (e) => {
@@ -18,23 +21,61 @@ const Signup = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const {email, password, name, photoURL} = formData;
-    signUpUser(email, password, name, photoURL)
-};
+    const { email, password, name, photoURL } = formData;
+    signUpUser(email, password)
+      .then((data) => {
+        updateProfile(auth.currentUser, {
+          
+          displayName: name,
+          photoURL,
+        }).then(() => {
+          Swal.fire({
+            position: "middle-center",
+            icon: "success",
+            title: "SignUp Successfull.",
+            showConfirmButton: false,
+            timer: 2000,
+          });
+          setUser({
+            ...data.user,
+            displayName: name,
+            photoURL: photoURL
+          });
+          setLoading(false);
+        });
+        
+      })
+      .catch((error) => {
+        let errorMessage;
+        console.log(error.message);
+        if (error.message === "Firebase: Error (auth/email-already-in-use).") {
+          errorMessage = "This Email Used in Another Account.";
+        } else {
+          errorMessage = "Something Went Wrong";
+        }
+        Swal.fire({
+          icon: "error",
+          title: "Oops...",
+          text: `${errorMessage}`,
+          footer: "Try to use another email",
+        });
+      });
+  };
 
   const handleGoogleSignIn = () => {
-    console.log('Google Sign-In clicked');
-    
+    googleSignIn();
   };
 
   return (
     <div className="min-h-screen bg-gray-100 flex items-center justify-center">
       <div className="w-full max-w-md bg-white p-8 rounded-lg shadow-md">
-        <h2 className="text-2xl font-bold text-center mb-4" style={{ color: '#0D9488' }}>
+        <h2
+          className="text-2xl font-bold text-center mb-4"
+          style={{ color: "#0D9488" }}
+        >
           Sign Up for Spark Academy
         </h2>
         <form onSubmit={handleSubmit} className="space-y-4">
-          
           <div className="form-control">
             <label htmlFor="name" className="label">
               <span className="label-text">Name</span>
@@ -51,7 +92,6 @@ const Signup = () => {
             />
           </div>
 
-         
           <div className="form-control">
             <label htmlFor="email" className="label">
               <span className="label-text">Email</span>
@@ -68,7 +108,6 @@ const Signup = () => {
             />
           </div>
 
-          
           <div className="form-control">
             <label htmlFor="password" className="label">
               <span className="label-text">Password</span>
@@ -85,7 +124,6 @@ const Signup = () => {
             />
           </div>
 
-          
           <div className="form-control">
             <label htmlFor="photoURL" className="label">
               <span className="label-text">Photo URL</span>
@@ -101,33 +139,33 @@ const Signup = () => {
             />
           </div>
 
-         
           <div className="form-control mt-6">
             <button
               type="submit"
               className="btn w-full"
-              style={{ backgroundColor: '#0D9488', color: 'white' }}
+              style={{ backgroundColor: "#0D9488", color: "white" }}
             >
               Sign Up
             </button>
           </div>
         </form>
 
-       
         <div className="form-control mt-4">
           <button
             onClick={handleGoogleSignIn}
             className="btn btn-outline w-full"
-            style={{ borderColor: '#0D9488', color: '#0D9488' }}
+            style={{ borderColor: "#0D9488", color: "#0D9488" }}
           >
             Continue with Google
           </button>
         </div>
 
-        
         <p className="text-center mt-4">
-          Already have an account?{' '}
-          <Link to="/signin" className="text-teal-600 font-bold hover:underline">
+          Already have an account?{" "}
+          <Link
+            to="/signin"
+            className="text-teal-600 font-bold hover:underline"
+          >
             Login here
           </Link>
         </p>

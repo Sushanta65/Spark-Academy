@@ -1,6 +1,6 @@
 import React from 'react';
 
-const AllClasses = () => {
+const AllClassesD = () => {
     return (
         <div>
             <h2>All classes</h2>
@@ -8,4 +8,4 @@ const AllClasses = () => {
     );
 };
 
-export default AllClasses;
+export default AllClassesD;

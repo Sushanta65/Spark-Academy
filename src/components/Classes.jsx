@@ -54,7 +54,7 @@ const classData = [
   }
 ];
 
-const AllClasses = () => {
+const Classes = () => {
   return (
     <div className="min-h-screen  py-10 px-6">
       <h1 className="text-3xl font-bold text-center mb-8" style={{ color: '#0D9488' }}>
@@ -96,4 +96,4 @@ const AllClasses = () => {
   );
 };
 
-export default AllClasses;
+export default Classes;
