@@ -1,11 +1,11 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
-import userImg from '../../assets/user.png'
+import userImg from "../../assets/user.png";
 
 const Navbar = () => {
   const { user, signOutUser } = useAuth();
-  console.log("From navbar",user)
+  "From navbar", user;
   const links = [
     { name: "Home", path: "/" },
     { name: "All Classes", path: "/classes" },
@@ -52,8 +52,8 @@ const Navbar = () => {
               <li className="dropdown dropdown-hover relative">
                 <img
                   className="w-10 p-0 rounded-full cursor-pointer"
-                  src={user.photoURL? user.photoURL : userImg}
-                  alt=''
+                  src={user.photoURL ? user.photoURL : userImg}
+                  alt=""
                   tabIndex={0}
                 />
                 <ul

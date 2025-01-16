@@ -16,7 +16,7 @@ const Users = () => {
   // Make Admin Handler
   const handleMakeAdmin = (userId, userName) => {
     const message = `Are you sure to make <b class="text-teal-600">${userName}</b> <span class="text-green-600">Admin<span>? `;
-    const successMessage = `<b class="text-teal-600">${userName}</b> is <span class="text-green-600">Admin<span> Now. `;
+    const successMessage = `<b class="text-teal-600">${userName}</b> is <span class="text-green-600">Admin</span> Now. `;
     Swal.fire({
       title: `${message}`,
       icon: "question",
@@ -26,13 +26,12 @@ const Users = () => {
       denyButtonText: `Don't Update`,
     }).then((result) => {
       if (result.isConfirmed) {
-        axiosSecure.patch(`/users/${userId}`).then((res) => {
+        axiosSecure.patch(`/users/admin/${userId}`).then((res) => {
           if (res.data.modifiedCount > 0) {
             Swal.fire({
               icon: "success",
               title: `${successMessage}`,
-              text: "The user has been made an admin.",
-              timer: 2000,
+              text: "The user has been made an admin."
             });
             setUsers((prevUsers) =>
               prevUsers.map((user) =>
