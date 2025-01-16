@@ -4,15 +4,18 @@ import useAuth from "../hooks/useAuth";
 import Swal from "sweetalert2";
 import { updateProfile } from "firebase/auth";
 import { auth } from "../../firebase.init";
+import useAxiosPublic from "../hooks/useAxiosPublic";
 
 const Signup = () => {
   const { signUpUser, googleSignIn, setUser, setLoading } = useAuth();
+  const axiosSecure = useAxiosPublic()
   const [formData, setFormData] = useState({
     name: "",
     email: "",
     password: "",
     photoURL: "",
   });
+
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -25,25 +28,36 @@ const Signup = () => {
     signUpUser(email, password)
       .then((data) => {
         updateProfile(auth.currentUser, {
-          
           displayName: name,
           photoURL,
         }).then(() => {
-          Swal.fire({
-            position: "middle-center",
-            icon: "success",
-            title: "SignUp Successfull.",
-            showConfirmButton: false,
-            timer: 2000,
+          const user = {
+            name,
+            email,
+            photoURL,
+            role: 'student'
+          };
+          axiosSecure.post("/users", user).then((res) => {
+            if(res.data.insertedId){
+              Swal.fire({
+                position: "middle-center",
+                icon: "success",
+                title: "SignUp Successfull.",
+                showConfirmButton: false,
+                timer: 2000,
+              });
+              setUser({
+                ...data.user,
+                displayName: name,
+                photoURL: photoURL,
+              });
+              setLoading(false);
+            }
+            
+            
+            
           });
-          setUser({
-            ...data.user,
-            displayName: name,
-            photoURL: photoURL
-          });
-          setLoading(false);
         });
-        
       })
       .catch((error) => {
         let errorMessage;

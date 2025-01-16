@@ -5,7 +5,7 @@ import userImg from '../../assets/user.png'
 
 const Navbar = () => {
   const { user, signOutUser } = useAuth();
-
+  console.log("From navbar",user)
   const links = [
     { name: "Home", path: "/" },
     { name: "All Classes", path: "/classes" },
