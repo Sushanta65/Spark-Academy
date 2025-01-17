@@ -12,11 +12,11 @@ import useAuth from "../hooks/useAuth";
 
 
 const Dashboard = () => {
- const {user} = useAuth()
+ const {userRole = 'student'} = useAuth()
   
 
   // Determine user role (default to student if undefined)
-  const userRole = user?.role || "student";
+  
 
   // Sidebar items based on role
   const routes = [

@@ -1,4 +1,4 @@
-import React from 'react';
+
 
 // Example JSON data (replace with fetched data from your backend)
 const classData = [
@@ -55,6 +55,7 @@ const classData = [
 ];
 
 const Classes = () => {
+  
   return (
     <div className="min-h-screen  py-10 px-6">
       <h1 className="text-3xl font-bold text-center mb-8" style={{ color: '#0D9488' }}>

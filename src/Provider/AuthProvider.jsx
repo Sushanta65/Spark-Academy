@@ -17,7 +17,7 @@ export const AuthContext = createContext();
 const AuthProvider = ({ children }) => {
   const [user, setUser] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [currentUser, setCurrentUser] = useState([]);
+  const [userRole, setUserRole] = useState('')
   const axiosSecure = useAxiosPublic();
 
   const provider = new GoogleAuthProvider();
@@ -77,7 +77,7 @@ const AuthProvider = ({ children }) => {
     user,
     setLoading,
     loading,
-    currentUser,
+    userRole
   };
 
   
@@ -87,7 +87,11 @@ const AuthProvider = ({ children }) => {
     const unsubsribe = onAuthStateChanged(auth, (currentUser) => {
       setUser(currentUser);
       console.log(currentUser);
-
+      axiosSecure.get(`/users/${user?.email}`)
+      .then(res => {
+        console.log("from authstatechange",res.data.role)
+        setUserRole(res.data.role)
+      })
       setLoading(false);
     });
     return () => {
