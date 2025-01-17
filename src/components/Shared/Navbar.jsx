@@ -9,7 +9,7 @@ const Navbar = () => {
   const links = [
     { name: "Home", path: "/" },
     { name: "All Classes", path: "/classes" },
-    { name: "Teach on Spark Academy", path: "/teach" },
+    { name: "Teach on Spark Academy", path: "/teach-on-spark-academy" },
   ];
 
   if (user?.email) {

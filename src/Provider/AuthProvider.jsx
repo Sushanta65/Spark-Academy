@@ -18,7 +18,7 @@ const AuthProvider = ({ children }) => {
   const [user, setUser] = useState([]);
   const [loading, setLoading] = useState(true);
   const [userRole, setUserRole] = useState('')
-  const axiosSecure = useAxiosPublic();
+  const axiosPublic = useAxiosPublic();
 
   const provider = new GoogleAuthProvider();
 
@@ -41,7 +41,7 @@ const AuthProvider = ({ children }) => {
           photoURL: data.user.photoURL,
           role: "student",
         };
-        axiosSecure.post("/users", newUser).then((res) => {
+        axiosPublic.post("/users", newUser).then((res) => {
           console.log(res);
           setUser(data.user)
         });
@@ -87,7 +87,7 @@ const AuthProvider = ({ children }) => {
     const unsubsribe = onAuthStateChanged(auth, (currentUser) => {
       setUser(currentUser);
       console.log(currentUser);
-      axiosSecure.get(`/users/${user?.email}`)
+      axiosPublic.get(`/users/${user?.email}`)
       .then(res => {
         console.log("from authstatechange",res.data.role)
         setUserRole(res.data.role)
@@ -97,7 +97,7 @@ const AuthProvider = ({ children }) => {
     return () => {
       unsubsribe();
     };
-  }, [axiosSecure, user?.email]);
+  }, [axiosPublic, user?.email]);
 
   return (
     <AuthContext.Provider value={authInfo}>{children}</AuthContext.Provider>

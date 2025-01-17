@@ -8,7 +8,7 @@ import useAxiosPublic from "../hooks/useAxiosPublic";
 
 const Signup = () => {
   const { signUpUser, googleSignIn, setUser, setLoading } = useAuth();
-  const axiosSecure = useAxiosPublic();
+  const axiosPublic = useAxiosPublic();
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -36,7 +36,7 @@ const Signup = () => {
             photoURL,
             role: "student",
           };
-          axiosSecure.post("/users", user).then((res) => {
+          axiosPublic.post("/users", user).then((res) => {
             if (res.data.insertedId) {
               Swal.fire({
                 position: "middle-center",
