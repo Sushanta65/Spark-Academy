@@ -75,6 +75,7 @@ const TeachOnSparkAcademy = () => {
             category: "",
             status: "pending"
           });
+
         }
       })
       .catch((error) => {
@@ -86,6 +87,9 @@ const TeachOnSparkAcademy = () => {
         });
       });
   };
+
+ 
+
 
   if (loading) {
     return (
@@ -218,6 +222,7 @@ const TeachOnSparkAcademy = () => {
           </div>
         </form>
       </div>
+      
     </div>
   );
 };

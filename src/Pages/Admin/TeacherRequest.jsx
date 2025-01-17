@@ -23,7 +23,7 @@ const TeacherRequest = () => {
   // Handle approve button click
   const handleApprove = (id, email) => {
     axiosPublic
-      .patch(`/teacher-requests/approved/${id}`)
+      .patch(`/teacher-requests/${id}`, {status: 'accepted'})
       .then((res) => {
         if (res.data.modifiedCount > 0) {
 
@@ -55,20 +55,28 @@ const TeacherRequest = () => {
   };
 
   // Handle reject button click
-  const handleReject = (id) => {
+  const handleReject = (id, email) => {
     axiosPublic
-      .patch(`/teacher-requests/rejected/${id}`)
+      .patch(`/teacher-requests/${id}`, {status: 'rejected'})
       .then((res) => {
-        // if (res.data.modifiedCount > 0) {
-        //   Swal.fire({
-        //     icon: "success",
-        //     title: "Request Rejected",
-        //     text: "The teacher request has been rejected.",
-        //   });
-        //   setRequests((prev) =>
-        //     prev.filter((req) => req._id !== id)
-        //   ); // Remove rejected request from the UI
-        // }
+        if (res.data.modifiedCount > 0) {
+
+            axiosPublic.patch(`/users/${email}`, {role: 'rejected'})
+            .then(res => {
+                console.log(res)
+            })
+          Swal.fire({
+            icon: "success",
+            title: "Request Rejected",
+            text: "The teacher request has been rejected.",
+          });
+          setRequests((prev) =>
+            prev.map((req) =>
+              req._id === id ? { ...req, status: "rejected" } : req
+            )
+          );
+        
+        }
         console.log(res)
       })
       .catch((error) => {
@@ -93,65 +101,87 @@ const TeacherRequest = () => {
   }
 
   return (
-    <div className="min-h-screen bg-gray-100 p-4">
-      <div className="max-w-6xl mx-auto bg-white shadow-lg rounded-lg p-6">
-        <h1 className="text-2xl font-bold text-teal-600 mb-6 text-center">
-          Teacher Requests
-        </h1>
+    <div className=" bg-gray-100 p-4 flex items-center justify-center">
+    <div className="w-full  bg-white rounded-lg shadow-md p-4">
+      <h1 className="text-xl font-bold text-teal-600 mb-4 text-center">
+        Teacher Requests
+      </h1>
 
-        <div className="overflow-x-auto">
-          <table className="table-auto w-full border-collapse bg-gray-50 rounded-lg">
-            <thead className="bg-teal-600 text-white">
-              <tr>
-                <th className="px-4 py-2">Name</th>
-                <th className="px-4 py-2">Image</th>
-                <th className="px-4 py-2">Experience</th>
-                <th className="px-4 py-2">Title</th>
-                <th className="px-4 py-2">Category</th>
-                <th className="px-4 py-2">Status</th>
-                <th className="px-4 py-2">Actions</th>
+      <div className="overflow-x-auto">
+        <table className="table-auto w-full text-sm border-collapse bg-gray-50">
+          <thead className="bg-teal-600 text-white">
+            <tr>
+              <th className="px-2 py-3 text-left">Name</th>
+              <th className="px-2 py-3 text-center">Image</th>
+              <th className="px-2 py-3 text-center">Experience</th>
+              <th className="px-2 py-3 text-center">Title</th>
+              <th className="px-2 py-3 text-center">Category</th>
+              <th className="px-2 py-3 text-center">Status</th>
+              <th className="px-2 py-3 text-center">Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            {requests.map((requestedUser) => (
+              <tr key={requestedUser._id} className="border-b">
+                <td className="px-2 py-2">{requestedUser.name}</td>
+                <td className="px-2 py-2 text-center">
+                  <img
+                    src={requestedUser.photoURL || "/default-avatar.png"}
+                    alt={requestedUser.name}
+                    className="w-8 h-8 rounded-full mx-auto"
+                  />
+                </td>
+                <td className="px-2 py-2 text-center capitalize">
+                  {requestedUser.experience}
+                </td>
+                <td className="px-2 py-2 text-center">{requestedUser.title}</td>
+                <td className="px-2 py-2 text-center">{requestedUser.category}</td>
+                <td
+                  className={`px-2 py-2 text-center capitalize ${
+                    requestedUser.status === "rejected"
+                      ? "text-red-600"
+                      : requestedUser.status === "accepted"
+                      ? "text-green-600"
+                      : "text-teal-600"
+                  }`}
+                >
+                  {requestedUser.status}
+                </td>
+                <td className="px-2 py-2 text-center">
+                  <div className="flex items-center justify-center gap-2">
+                    <button
+                      disabled={
+                        requestedUser.status === "accepted" ||
+                        requestedUser.status === "rejected"
+                      }
+                      onClick={() =>
+                        handleApprove(requestedUser._id, requestedUser.email)
+                      }
+                      className="btn bg-green-600 text-white px-3 py-1 rounded hover:bg-green-700 text-xs"
+                    >
+                      Approve
+                    </button>
+                    <button
+                      disabled={
+                        requestedUser.status === "accepted" ||
+                        requestedUser.status === "rejected"
+                      }
+                      onClick={() =>
+                        handleReject(requestedUser._id, requestedUser.email)
+                      }
+                      className="btn bg-red-600 text-white px-3 py-1 rounded hover:bg-red-700 text-xs"
+                    >
+                      Reject
+                    </button>
+                  </div>
+                </td>
               </tr>
-            </thead>
-            <tbody>
-              {requests.map((requestedUser) => (
-                <tr key={requestedUser._id} className="text-center border-b">
-                  <td className="px-4 py-2">{requestedUser.name}</td>
-                  <td className="px-4 py-2">
-                    <img
-                      src={requestedUser.photoURL || "/default-avatar.png"}
-                      alt={requestedUser.name}
-                      className="w-10 h-10 rounded-full mx-auto"
-                    />
-                  </td>
-                  <td className="px-4 py-2 capitalize">{requestedUser.experience}</td>
-                  <td className="px-4 py-2">{requestedUser.title}</td>
-                  <td className="px-4 py-2">{requestedUser.category}</td>
-                  <td className="px-4 py-2 capitalize">{requestedUser.status}</td>
-                  <td className="px-4 py-2">
-                    {requestedUser.status === "pending"?(
-                      <div className="flex items-center justify-center gap-2">
-                        <button
-                          onClick={() => handleApprove(requestedUser._id, requestedUser.email)}
-                          className="btn bg-green-600 text-white px-3 py-1 rounded hover:bg-green-700"
-                        >
-                          Approve
-                        </button>
-                        <button
-                          onClick={() => handleReject(requestedUser._id)}
-                          className="btn bg-red-600 text-white px-3 py-1 rounded hover:bg-red-700"
-                        >
-                          Reject
-                        </button>
-                      </div>
-                    ): <span className="text-green-600">Accepted</span>}
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
+            ))}
+          </tbody>
+        </table>
       </div>
     </div>
+  </div>
   );
 };
 

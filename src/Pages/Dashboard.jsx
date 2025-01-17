@@ -75,6 +75,21 @@ const Dashboard = () => {
           },
         ]
       : []),
+
+      ...(userRole === "rejected"
+        ? [
+            {
+              path: "/dashboard/my-enroll-classes",
+              name: "My Enroll Classes",
+              icon: <FaBook />,
+            },
+            {
+              path: "/dashboard/my-profile",
+              name: "My Profile",
+              icon: <FaUser />,
+            },
+          ]
+        : []),
   ];
 
   return (
