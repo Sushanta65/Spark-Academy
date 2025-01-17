@@ -34,6 +34,7 @@ const TeachOnSparkAcademy = () => {
         experience: "",
         title: "",
         category: "",
+        status: "pending"
       });
       setLoading(false);
     }
@@ -72,6 +73,7 @@ const TeachOnSparkAcademy = () => {
             experience: "",
             title: "",
             category: "",
+            status: "pending"
           });
         }
       })

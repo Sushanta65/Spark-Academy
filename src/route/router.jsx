@@ -9,6 +9,8 @@ import Classes from "../components/Classes";
 import PrivateRoute from "./PrivateRoute";
 import Users from "../Pages/DashboardPages/Users";
 import TeachOnSparkAcademy from "../Pages/TeachOnSparkAcademy";
+import TeacherRequest from "../Pages/Admin/TeacherRequest";
+import AdminRoute from "./AdminRoute";
 
 
 const router = createBrowserRouter([
@@ -34,11 +36,15 @@ const router = createBrowserRouter([
                 children: [
                     {
                         path: '/dashboard/all-classes',
-                        element: <AllClasses></AllClasses>
+                        element: <AdminRoute><AllClasses></AllClasses></AdminRoute>
                     },
                     {
                         path: '/dashboard/users',
-                        element: <Users/>
+                        element: <AdminRoute><Users/></AdminRoute>
+                    },
+                    {
+                        path: '/dashboard/teacher-request',
+                        element: <AdminRoute><TeacherRequest></TeacherRequest></AdminRoute>
                     }
                 ]
             },
