@@ -44,12 +44,12 @@ const Dashboard = () => {
     ...(userRole === "teacher"
       ? [
           {
-            path: "/dashboard/add-classes",
+            path: "/dashboard/add-class",
             name: "Add Classes",
             icon: <FaPlus />,
           },
           {
-            path: "/dashboard/my-classes",
+            path: "/dashboard/my-class",
             name: "My Classes",
             icon: <FaChalkboardTeacher />,
           },

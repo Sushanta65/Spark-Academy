@@ -260,6 +260,7 @@ const TeachOnSparkAcademy = () => {
         {requestStatus === "pending" && (
           <div>
             <div className="flex flex-col items-center justify-center bg-gray-50 rounded-lg shadow-lg p-8">
+              <h2 className="text-2xl capitalize text-green-600 pb-5">{requestStatus}</h2>
               <h2 className="text-2xl font-bold text-teal-600 mb-2">
                 Your Request is Under Review
               </h2>
