@@ -54,7 +54,7 @@ const router = createBrowserRouter([
             },
             {
                 path: '/teach-on-spark-academy',
-                element: <TeachOnSparkAcademy></TeachOnSparkAcademy>
+                element: <PrivateRoute><TeachOnSparkAcademy></TeachOnSparkAcademy></PrivateRoute>
             }
         ]
     }
