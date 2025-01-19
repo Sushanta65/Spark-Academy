@@ -11,11 +11,11 @@ const MyClasses = () => {
   const [classes, setClasses] = useState([]);
 
   useEffect(() => {
-    axiosPublic.get('/teacher-classes')
+    axiosPublic.get(`/my-classes/${user.email}`)
     .then(res => {
       setClasses(res.data)
     })
-  }, [axiosPublic])
+  }, [axiosPublic, user.email])
 
   return (
     <div className="min-h-screen bg-gray-100 p-4">

@@ -4,7 +4,6 @@ import Home from "../Pages/Home";
 import SignUp from "../Pages/SignUp";
 import SignIn from "../Pages/SignIn";
 import Dashboard from "../Pages/Dashboard";
-import AllClasses from "../Pages/DashboardPages/AllClasses";
 import Classes from "../components/Classes";
 import PrivateRoute from "./PrivateRoute";
 import Users from "../Pages/DashboardPages/Users";
@@ -14,6 +13,7 @@ import AdminRoute from "./AdminRoute";
 import AddClass from "../Pages/Teacher/AddClass";
 import TeacherRoute from "./TeacherRoute";
 import MyClasses from "../Pages/Teacher/MyClasses";
+import ClassesAdmin from "../Pages/Admin/ClassesAdmin";
 
 
 const router = createBrowserRouter([
@@ -39,7 +39,7 @@ const router = createBrowserRouter([
                 children: [
                     {
                         path: '/dashboard/all-classes',
-                        element: <AdminRoute><AllClasses></AllClasses></AdminRoute>
+                        element: <AdminRoute><ClassesAdmin></ClassesAdmin></AdminRoute>
                     },
                     {
                         path: '/dashboard/users',
