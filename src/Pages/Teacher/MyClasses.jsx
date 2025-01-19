@@ -10,46 +10,12 @@ const MyClasses = () => {
   const navigate = useNavigate();
   const [classes, setClasses] = useState([]);
 
-  
   useEffect(() => {
-    axiosPublic
-      .get(`/classes?email=${user.email}`)
-      .then((res) => setClasses(res.data))
-      .catch((error) => console.error("Classes not found!:", error));
-  }, [user.email, axiosPublic]);
-
-  // Handle Delete Class
-  const handleDelete = (id) => {
-    Swal.fire({
-      title: "Are you sure?",
-      text: "You won't be able to revert this!",
-      icon: "warning",
-      showCancelButton: true,
-      confirmButtonColor: "#3085d6",
-      cancelButtonColor: "#d33",
-      confirmButtonText: "Yes, delete it!",
-    }).then((result) => {
-      if (result.isConfirmed) {
-        axiosPublic
-          .delete(`/classes/${id}`)
-          .then((res) => {
-            if (res.data.deletedCount > 0) {
-              Swal.fire("Deleted!", "Your class has been deleted.", "success");
-              setClasses((prev) => prev.filter((cls) => cls._id !== id));
-            }
-          })
-          .catch((error) => {
-            console.error("Error deleting class:", error);
-            Swal.fire("Error!", "Failed to delete the class.", "error");
-          });
-      }
-    });
-  };
-
-  // Handle Update Class
-  const handleUpdate = (id) => {
-    navigate(`/dashboard/my-class/${id}`);
-  };
+    axiosPublic.get('/teacher-classes')
+    .then(res => {
+      setClasses(res.data)
+    })
+  }, [axiosPublic])
 
   return (
     <div className="min-h-screen bg-gray-100 p-4">
@@ -88,7 +54,7 @@ const MyClasses = () => {
               </p>
               <p className="text-gray-600">{cls.description}</p>
               <div className="flex justify-between mt-4">
-                {/* Update Button */}
+                
                 <button
                   onClick={() => handleUpdate(cls._id)}
                   className="btn bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700"
@@ -96,7 +62,7 @@ const MyClasses = () => {
                   Update
                 </button>
 
-                {/* Delete Button */}
+                
                 <button
                   onClick={() => handleDelete(cls._id)}
                   className="btn bg-red-600 text-white px-4 py-2 rounded hover:bg-red-700"
@@ -104,7 +70,7 @@ const MyClasses = () => {
                   Delete
                 </button>
               </div>
-              {/* See Details Button */}
+              
               <button
                 onClick={() => navigate(`/dashboard/my-class/${cls._id}`)}
                 disabled={cls.status !== "approved"}

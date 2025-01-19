@@ -15,10 +15,6 @@ const Dashboard = () => {
  const {userRole = 'student'} = useAuth()
   
 
-  // Determine user role (default to student if undefined)
-  
-
-  // Sidebar items based on role
   const routes = [
     ...(userRole === "admin"
       ? [
@@ -97,6 +93,12 @@ const Dashboard = () => {
       <div className="bg-teal-600 w-full lg:w-48 text-white">
         <div className="p-4 text-center font-bold border-b border-teal-500">
           Dashboard
+          
+        </div>
+        <div className="text-center py-2 border-b-2">
+        <p>{userRole === 'student'? 'Student': ''}</p>
+          <p>{userRole === 'teacher'? 'Teacher': ''}</p>
+          <p>{userRole === 'admin'? 'Admin': ''}</p>
         </div>
         <ul className="flex lg:flex-col text-sm">
           {routes.map((route) => (
