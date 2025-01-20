@@ -91,6 +91,7 @@ const AuthProvider = ({ children }) => {
       .then(res => {
         console.log("from authstatechange",res.data.role)
         setUserRole(res.data.role)
+        setLoading(false)
       })
       setLoading(false);
     });

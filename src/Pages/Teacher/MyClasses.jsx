@@ -17,6 +17,12 @@ const MyClasses = () => {
     })
   }, [axiosPublic, user.email])
 
+  const handleUpdateClass = (id) => {
+    navigate(`/dashboard/my-class/${id}`)
+  }
+
+  
+
   return (
     <div className="min-h-screen bg-gray-100 p-4">
       <div className="max-w-6xl mx-auto bg-white shadow-lg rounded-lg p-6">
@@ -56,7 +62,7 @@ const MyClasses = () => {
               <div className="flex justify-between mt-4">
                 
                 <button
-                  onClick={() => handleUpdate(cls._id)}
+                  onClick={() => handleUpdateClass(cls._id)}
                   className="btn bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700"
                 >
                   Update
