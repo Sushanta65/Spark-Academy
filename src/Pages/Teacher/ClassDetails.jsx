@@ -26,7 +26,7 @@ const ClassDetails = () => {
   };
 
   useEffect(() => {
-    axiosSecure.get('/assignments')
+    axiosSecure.get(`/assignments/${id}`)
     .then(res => {
         console.log(res)
         setAssignments(res.data)
@@ -51,7 +51,7 @@ const ClassDetails = () => {
 
         <div className="card p-6 bg-white shadow-lg rounded-lg">
           <h3 className="text-xl font-semibold">Total Assignments</h3>
-          <p className="text-2xl font-bold">{classProgress.totalAssignments}</p>
+          <p className="text-2xl font-bold">{assignments.length}</p>
         </div>
 
         <div className="card p-6 bg-white shadow-lg rounded-lg">
