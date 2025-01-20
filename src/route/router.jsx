@@ -14,6 +14,8 @@ import MyClasses from "../Pages/Teacher/MyClasses";
 import ClassesAdmin from "../Pages/Admin/ClassesAdmin";
 import UpdateClass from "../Pages/Teacher/UpdateClass";
 import ClassDetails from "../Pages/Teacher/ClassDetails";
+import ClassDetailsStudent from "../Pages/Student/ClassDetailsStudent";
+import StudentProfile from "../Pages/Student/StudentProfile";
 
 
 const router = createBrowserRouter([
@@ -64,12 +66,21 @@ const router = createBrowserRouter([
                     {
                         path: '/dashboard/my-class/details/:id',
                         element: <ClassDetails></ClassDetails>
+                    },
+                    {
+                        path: '/dashboard/my-profile',
+                        element: <StudentProfile></StudentProfile>
                     }
+                    
                 ]
             },
             {
                 path: '/classes',
                 element: <Classes></Classes>
+            },
+            {
+                path: '/class/:id',
+                element: <ClassDetailsStudent></ClassDetailsStudent>
             },
             {
                 path: '/teach-on-spark-academy',
