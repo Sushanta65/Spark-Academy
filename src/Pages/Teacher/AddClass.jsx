@@ -16,6 +16,7 @@ const AddClass = () => {
     price: "",
     description: "",
     image: "",
+    enrolled: 0
   });
 
 
@@ -42,12 +43,13 @@ const AddClass = () => {
       return;
     }
 
-    // Create class with status "pending"
     const classData = {
       ...formData,
       status: "pending",
     };
 
+
+    
     axiosPublic
       .post("/teacher-classes", classData)
       .then((res) => {
@@ -57,7 +59,7 @@ const AddClass = () => {
             title: "Class Added",
             text: "Your class has been added successfully and is pending approval.",
           });
-          navigate("/dashboard/teacher/my-classes");
+          navigate("/dashboard/my-class");
         }
       })
       .catch((error) => {

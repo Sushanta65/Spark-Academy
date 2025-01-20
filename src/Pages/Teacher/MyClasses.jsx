@@ -3,13 +3,14 @@ import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import useAxiosPublic from "../../hooks/useAxiosPublic";
 import useAuth from "../../hooks/useAuth";
+import useAxiosSecure from "../../hooks/useAxiosSecure";
 
 const MyClasses = () => {
   const { user, userRole } = useAuth();
   const axiosPublic = useAxiosPublic();
   const navigate = useNavigate();
   const [classes, setClasses] = useState([]);
-
+  const axiosSecure = useAxiosSecure()
 
   
 
@@ -20,13 +21,51 @@ const MyClasses = () => {
     })
   }, [axiosPublic, user.email])
 
+
+  
   const handleUpdateClass = (id) => {
-    navigate(`/dashboard/my-class/${id}`)
+    navigate(`/dashboard/my-class/update/${id}`)
   }
 
   if(userRole === 'student' || userRole === 'admin'){
    navigate('/dashboard')
    return
+  }
+
+  const handleDeleteClass = (id) => {
+
+    Swal.fire({
+      title: "Are You Sure to Delete The Class",
+      text: "It will deleted for parmanet.",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Delete"
+    }).then((result) => {
+      if (result.isConfirmed) {
+        axiosSecure.delete(`/delete-class/${id}`)
+        .then(res => {
+          console.log(res)
+          if(res.data.deletedCount > 0){
+            Swal.fire({
+              title: "Deleted!",
+              text: "Your file has been deleted.",
+              icon: "success"
+            });
+            setClasses((prevClasses) =>
+              prevClasses.filter((cls) => cls._id !== id)
+            );
+            
+          }
+        })
+
+
+        
+      }
+    });
+
+   
   }
 
   return (
@@ -76,7 +115,7 @@ const MyClasses = () => {
 
                 
                 <button
-                  onClick={() => handleDelete(cls._id)}
+                  onClick={() => handleDeleteClass(cls._id)}
                   className="btn bg-red-600 text-white px-4 py-2 rounded hover:bg-red-700"
                 >
                   Delete
@@ -84,7 +123,7 @@ const MyClasses = () => {
               </div>
               
               <button
-                onClick={() => navigate(`/dashboard/my-class/${cls._id}`)}
+                onClick={() => navigate(`/dashboard/my-class/details/${cls._id}`)}
                 disabled={cls.status !== "approved"}
                 className={`btn w-full mt-4 ${
                   cls.status === "approved"

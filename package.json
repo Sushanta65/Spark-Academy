@@ -11,6 +11,7 @@
     "start": "nodemon index.js"
   },
   "dependencies": {
+    "@tanstack/react-query": "^5.64.2",
     "axios": "^1.7.9",
     "firebase": "^11.1.0",
     "localforage": "^1.10.0",

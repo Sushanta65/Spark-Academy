@@ -1,3 +1,9 @@
+import { useEffect, useState } from "react";
+import useAxiosPublic, { axiosPublic } from "../hooks/useAxiosPublic";
+
+
+
+
 
 
 // Example JSON data (replace with fetched data from your backend)
@@ -20,7 +26,7 @@ const classData = [
     price: 150,
     shortDescription: "Master graphic design tools and techniques to create stunning visuals.",
     totalEnrollment: 30,
-    status: "approved"
+    status: "rejected"
   },
   {
     id: "3",
@@ -55,6 +61,15 @@ const classData = [
 ];
 
 const Classes = () => {
+const [classes, setClasses] = useState([])
+const axiosPublic = useAxiosPublic()
+
+    useEffect(() => {
+      axiosPublic.get('/teacher-classes')
+      .then(res => {
+        setClasses(res.data)
+      })
+    }, [axiosPublic])
   
   return (
     <div className="min-h-screen  py-10 px-6">
@@ -62,10 +77,10 @@ const Classes = () => {
         Approved Classes
       </h1>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {classData
+        {classes
           .filter((classItem) => classItem.status === "approved")
           .map((classItem) => (
-            <div key={classItem.id} className="card bg-white shadow-md rounded-lg overflow-hidden">
+            <div key={classItem._id} className="card bg-white shadow-md rounded-lg overflow-hidden">
               <img
                 src={classItem.image}
                 alt={classItem.title}
@@ -74,14 +89,14 @@ const Classes = () => {
               <div className="p-4">
                 <h2 className="text-xl font-semibold mb-2">{classItem.title}</h2>
                 <p className="text-gray-600 text-sm mb-2">
-                  <span className="font-medium">Teacher:</span> {classItem.teacherName}
+                  <span className="font-medium">Teacher:</span> {classItem.name}
                 </p>
-                <p className="text-gray-600 text-sm mb-4">{classItem.shortDescription}</p>
+                <p className="text-gray-600 text-sm mb-4">{classItem.description}</p>
                 <p className="text-gray-700 font-medium">
                   Price: <span className="text-teal-600">${classItem.price}</span>
                 </p>
                 <p className="text-gray-600 text-sm mb-4">
-                  Total Enrollments: <span className="font-semibold">{classItem.totalEnrollment}</span>
+                  Total Enrollments: <span className="font-semibold">{classItem.enrolled}</span>
                 </p>
                 <button
                   className="btn w-full"
