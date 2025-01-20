@@ -5,10 +5,13 @@ import useAxiosPublic from "../../hooks/useAxiosPublic";
 import useAuth from "../../hooks/useAuth";
 
 const MyClasses = () => {
-  const { user } = useAuth();
+  const { user, userRole } = useAuth();
   const axiosPublic = useAxiosPublic();
   const navigate = useNavigate();
   const [classes, setClasses] = useState([]);
+
+
+  
 
   useEffect(() => {
     axiosPublic.get(`/my-classes/${user.email}`)
@@ -21,7 +24,10 @@ const MyClasses = () => {
     navigate(`/dashboard/my-class/${id}`)
   }
 
-  
+  if(userRole === 'student' || userRole === 'admin'){
+   navigate('/dashboard')
+   return
+  }
 
   return (
     <div className="min-h-screen bg-gray-100 p-4">

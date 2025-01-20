@@ -1,11 +1,14 @@
 import React, { useEffect, useState } from "react";
 import Swal from "sweetalert2";
 import useAxiosPublic from "../../hooks/useAxiosPublic";
+import useAuth from "../../hooks/useAuth";
+import { useNavigate } from "react-router-dom";
 
 const Users = () => {
   const [users, setUsers] = useState([]);
   const axiosSecure = useAxiosPublic();
-
+  const {userRole} = useAuth()
+  const navigate = useNavigate()
   // Fetch users from the backend
   useEffect(() => {
     axiosSecure.get("/users").then((res) => {
@@ -45,6 +48,11 @@ const Users = () => {
       }
     });
   };
+
+  if(userRole === 'teacher' || userRole === 'student'){
+    navigate('/dashboard')
+    return
+   }
 
   return (
     <div className="min-h-screen bg-gray-100 p-4">

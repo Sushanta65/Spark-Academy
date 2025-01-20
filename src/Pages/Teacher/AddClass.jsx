@@ -5,7 +5,7 @@ import Swal from "sweetalert2";
 import useAxiosPublic from "../../hooks/useAxiosPublic";
 
 const AddClass = () => {
-  const { user } = useAuth();
+  const { user, userRole } = useAuth();
   const axiosPublic = useAxiosPublic();
   const navigate = useNavigate();
 
@@ -17,6 +17,12 @@ const AddClass = () => {
     description: "",
     image: "",
   });
+
+
+  if(userRole === 'student' || userRole === 'admin'){
+    navigate('/dashboard')
+    return
+   }
 
   const handleChange = (e) => {
     const { name, value } = e.target;

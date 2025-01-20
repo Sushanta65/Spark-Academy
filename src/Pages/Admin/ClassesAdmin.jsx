@@ -1,13 +1,17 @@
 import React, { useEffect, useState } from "react";
 import Swal from "sweetalert2";
 import useAxiosPublic from "../../hooks/useAxiosPublic";
+import useAuth from "../../hooks/useAuth";
+import { useNavigate } from "react-router-dom";
 
 const ClassesAdmin = () => {
   const axiosPublic = useAxiosPublic();
   const [classes, setClasses] = useState([]);
   const [loading, setLoading] = useState(true);
+  const {userRole} = useAuth()
+  const navigate = useNavigate()
 
-  // Fetch all classes
+
   useEffect(() => {
     axiosPublic
       .get("/teacher-classes")
@@ -21,7 +25,7 @@ const ClassesAdmin = () => {
       });
   }, [axiosPublic]);
 
-  // Handle Approve Button
+
   const handleApprove = (id) => {
     axiosPublic
       .patch(`/teacher-classes/${id}`, { status: "approved" })
@@ -41,7 +45,7 @@ const ClassesAdmin = () => {
       });
   };
 
-  // Handle Reject Button
+ 
   const handleReject = (id) => {
     Swal.fire({
       title: "Are you sure?",
@@ -83,6 +87,11 @@ const ClassesAdmin = () => {
       </div>
     );
   }
+
+  if(userRole === 'teacher' || userRole === 'student'){
+    navigate('/dashboard')
+    return
+   }
 
   return (
     <div className="min-h-screen bg-gray-100 p-4">

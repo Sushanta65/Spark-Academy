@@ -9,9 +9,7 @@ import PrivateRoute from "./PrivateRoute";
 import Users from "../Pages/DashboardPages/Users";
 import TeachOnSparkAcademy from "../Pages/TeachOnSparkAcademy";
 import TeacherRequest from "../Pages/Admin/TeacherRequest";
-import AdminRoute from "./AdminRoute";
 import AddClass from "../Pages/Teacher/AddClass";
-import TeacherRoute from "./TeacherRoute";
 import MyClasses from "../Pages/Teacher/MyClasses";
 import ClassesAdmin from "../Pages/Admin/ClassesAdmin";
 import UpdateClass from "../Pages/Teacher/UpdateClass";
@@ -40,27 +38,27 @@ const router = createBrowserRouter([
                 children: [
                     {
                         path: '/dashboard/all-classes',
-                        element: <AdminRoute><ClassesAdmin></ClassesAdmin></AdminRoute>
+                        element: <ClassesAdmin></ClassesAdmin>
                     },
                     {
                         path: '/dashboard/users',
-                        element: <AdminRoute><Users/></AdminRoute>
+                        element: <Users/>
                     },
                     {
                         path: '/dashboard/teacher-request',
-                        element: <AdminRoute><TeacherRequest></TeacherRequest></AdminRoute>
+                        element: <TeacherRequest></TeacherRequest>
                     },
                     {
                         path: '/dashboard/add-class',
-                        element: <TeacherRoute><AddClass></AddClass></TeacherRoute>
+                        element: <AddClass></AddClass>
                     },
                     {
                         path: '/dashboard/my-class',
-                        element: <TeacherRoute><MyClasses></MyClasses></TeacherRoute>
+                        element: <MyClasses></MyClasses>
                     },
                     {
                         path: '/dashboard/my-class/:id',
-                        element: <TeacherRoute><UpdateClass></UpdateClass></TeacherRoute>
+                        element: <UpdateClass></UpdateClass>
                     }
                 ]
             },

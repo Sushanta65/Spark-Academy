@@ -2,9 +2,11 @@ import { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import useAxiosPublic from "../../hooks/useAxiosPublic";
+import useAuth from "../../hooks/useAuth";
 
 const UpdateClass = () => {
   const { id } = useParams();
+  const {userRole} = useAuth()
   const axiosPublic = useAxiosPublic();
   const navigate = useNavigate();
 
@@ -75,6 +77,10 @@ const UpdateClass = () => {
       });
   };
 
+  if(userRole === 'student' || userRole === 'admin'){
+    navigate('/dashboard')
+    return
+   }
   
   if (loading) {
     return (

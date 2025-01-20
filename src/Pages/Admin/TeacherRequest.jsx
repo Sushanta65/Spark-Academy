@@ -1,11 +1,15 @@
 import React, { useEffect, useState } from "react";
 import Swal from "sweetalert2";
 import useAxiosPublic from "../../hooks/useAxiosPublic";
+import useAuth from "../../hooks/useAuth";
+import { useNavigate } from "react-router-dom";
 
 const TeacherRequest = () => {
   const axiosPublic = useAxiosPublic();
   const [requests, setRequests] = useState([]);
   const [loading, setLoading] = useState(true);
+  const {userRole} = useAuth()
+  const navigate = useNavigate()
 
   useEffect(() => {
     axiosPublic
@@ -99,6 +103,11 @@ const TeacherRequest = () => {
       </div>
     );
   }
+
+  if(userRole === 'teacher' || userRole === 'student'){
+    navigate('/dashboard')
+    return
+   }
 
   return (
     <div className=" bg-gray-100 p-4 flex items-center justify-center">
