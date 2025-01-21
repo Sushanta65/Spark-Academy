@@ -1,10 +1,11 @@
-import React from "react";
-import { NavLink } from "react-router-dom";
+import React, { useState } from "react";
+import { NavLink, useLocation } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
 import userImg from "../../assets/user.png";
 
 const Navbar = () => {
-  const { user, signOutUser } = useAuth();
+  const { user, signOutUser, userRole } = useAuth();
+  
   "From navbar", user;
   const links = [
     { name: "Home", path: "/" },
@@ -13,7 +14,7 @@ const Navbar = () => {
   ];
 
   if (user?.email) {
-    links.push({ name: "Dashboard", path: "/dashboard" });
+    links.push({ name: "Dashboard", path: "/dashboard/my-profile" });
   } else {
     links.push(
       { name: "Sign In", path: "/signin" },
@@ -21,8 +22,9 @@ const Navbar = () => {
     );
   }
 
+
   return (
-    <div className="navbar bg-white shadow-md w-full">
+    <>{userRole === 'admin' || <div className="navbar bg-white shadow-md w-full">
       <div className="container mx-auto flex justify-between items-center">
         {/* Logo */}
         <div className="flex items-center">
@@ -128,7 +130,7 @@ const Navbar = () => {
           </ul>
         </div>
       </div>
-    </div>
+    </div>}</>
   );
 };
 

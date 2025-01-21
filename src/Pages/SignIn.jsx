@@ -5,6 +5,7 @@ import Swal from 'sweetalert2';
 
 const SignIn = () => {
   const {signInUser, googleSignIn, setLoading, setUser} = useAuth()
+  
   const [formData, setFormData] = useState({
     email: '',
     password: '',
@@ -33,6 +34,7 @@ const location = useLocation()
                     showConfirmButton: false,
                     timer: 2000
                   });
+                  navigate('/')
             })
             .catch(error => {
                 Swal.fire({
@@ -46,6 +48,7 @@ const location = useLocation()
 
   const handleGoogleSignIn = () => {
     googleSignIn()
+    navigate('/')
   };
 
   return (

@@ -1,5 +1,5 @@
 
-import { NavLink, Outlet } from "react-router-dom";
+import { NavLink, Outlet, useNavigate } from "react-router-dom";
 import {
   FaUser,
   FaChalkboardTeacher,
@@ -12,8 +12,7 @@ import useAuth from "../hooks/useAuth";
 
 
 const Dashboard = () => {
- const {userRole = 'student'} = useAuth()
-  
+ const {userRole = 'student', signOutUser} = useAuth()
 
   const routes = [
     ...(userRole === "admin"
@@ -90,7 +89,7 @@ const Dashboard = () => {
 
   return (
     <div className="min-h-screen flex flex-col lg:flex-row bg-gray-100 border-t-2 border-teal-600">
-      <div className="bg-teal-600 w-full lg:w-48 text-white">
+      <div className="bg-teal-600 w-full lg:w-48 text-white relative">
         <div className="p-4 text-center font-bold border-b border-teal-500">
           Dashboard
           
@@ -115,6 +114,10 @@ const Dashboard = () => {
               </NavLink>
             </li>
           ))}
+          <div className="absolute bottom-20 text-center w-full"> 
+          <li className="bg-teal-800"><button onClick={signOutUser} className="btn btn-sm w-full rounded-none bg-teal-800 border-none text-white hover:bg-teal-900">Logout</button></li>
+          <li className="bg-teal-800"><button>Links</button></li>
+          </div>
         </ul>
       </div>
 

@@ -16,6 +16,7 @@ import UpdateClass from "../Pages/Teacher/UpdateClass";
 import ClassDetails from "../Pages/Teacher/ClassDetails";
 import ClassDetailsStudent from "../Pages/Student/ClassDetailsStudent";
 import StudentProfile from "../Pages/Student/StudentProfile";
+import Payment from "../Pages/Payment";
 
 
 const router = createBrowserRouter([
@@ -85,6 +86,10 @@ const router = createBrowserRouter([
             {
                 path: '/teach-on-spark-academy',
                 element: <PrivateRoute><TeachOnSparkAcademy></TeachOnSparkAcademy></PrivateRoute>
+            },
+            {
+                path: '/class/payment/:id',
+                element: <Payment></Payment>
             }
         ]
     }

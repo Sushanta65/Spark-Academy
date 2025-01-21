@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { FaUserAlt } from "react-icons/fa"; // React Icon for teacher avatar
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
 
 const ClassDetails = () => {
@@ -82,9 +82,11 @@ const ClassDetails = () => {
 
   {/* Enroll Button Section */}
   <div className="flex justify-center">
+    <Link to={`/class/payment/${classInfo._id}`}>
     <button className="px-6 py-3 bg-gradient-to-r from-teal-500 to-blue-600 text-white font-semibold rounded-lg shadow-md hover:from-teal-600 hover:to-blue-700 transition duration-200">
       Enroll in Class
     </button>
+    </Link>
   </div>
 
   {/* Assignments Section */}
