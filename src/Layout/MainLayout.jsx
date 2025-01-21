@@ -3,7 +3,7 @@ import Navbar from '../components/Shared/Navbar';
 
 const MainLayout = () => {
     return (
-        <div>
+        <div className='bg-gray-200 min-h-screen'>
             <Navbar />
             <Outlet/>
         </div>

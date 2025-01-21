@@ -16,7 +16,7 @@ import UpdateClass from "../Pages/Teacher/UpdateClass";
 import ClassDetails from "../Pages/Teacher/ClassDetails";
 import ClassDetailsStudent from "../Pages/Student/ClassDetailsStudent";
 import StudentProfile from "../Pages/Student/StudentProfile";
-import Payment from "../Pages/Payment";
+import Payment from "../Pages/Payment/Payment";
 
 
 const router = createBrowserRouter([
