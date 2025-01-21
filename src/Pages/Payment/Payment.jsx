@@ -45,7 +45,7 @@ const Payment = () => {
 
           <div>
             
-            <CheckoutForm></CheckoutForm>
+            <CheckoutForm classId={classInfo._id}></CheckoutForm>
           </div>
         </div>
       </div>
