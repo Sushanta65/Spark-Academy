@@ -15,8 +15,9 @@ import ClassesAdmin from "../Pages/Admin/ClassesAdmin";
 import UpdateClass from "../Pages/Teacher/UpdateClass";
 import ClassDetails from "../Pages/Teacher/ClassDetails";
 import ClassDetailsStudent from "../Pages/Student/ClassDetailsStudent";
-import StudentProfile from "../Pages/Student/StudentProfile";
+import StudentProfile from "../Pages/Student/Profile";
 import Payment from "../Pages/Payment/Payment";
+import MyEnrolled from "../Pages/Student/MyEnrolled";
 
 
 const router = createBrowserRouter([
@@ -71,6 +72,10 @@ const router = createBrowserRouter([
                     {
                         path: '/dashboard/my-profile',
                         element: <StudentProfile></StudentProfile>
+                    },
+                    {
+                        path: '/dashboard/my-enroll',
+                        element: <MyEnrolled></MyEnrolled>
                     }
                     
                 ]

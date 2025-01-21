@@ -55,7 +55,7 @@ const Users = () => {
    }
 
   return (
-    <div className="min-h-screen bg-gray-100 p-4">
+    <div className="min-h-screen  p-4">
       <h1 className="text-xl font-semibold text-teal-600 text-center mb-4">
         All Users
       </h1>

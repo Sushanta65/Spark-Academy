@@ -59,7 +59,7 @@ const Dashboard = () => {
     ...(userRole === "student"
       ? [
           {
-            path: "/dashboard/my-enroll-classes",
+            path: "/dashboard/my-enroll",
             name: "My Enroll Classes",
             icon: <FaBook />,
           },
@@ -88,7 +88,7 @@ const Dashboard = () => {
   ];
 
   return (
-    <div className="min-h-screen flex flex-col lg:flex-row bg-gray-100 border-t-2 border-teal-600">
+    <div className="min-h-screen flex flex-col lg:flex-row  border-t-2 border-teal-600">
       <div className="bg-teal-600 w-full lg:w-48 text-white relative">
         <div className="p-4 text-center font-bold border-b border-teal-500">
           Dashboard
@@ -121,7 +121,7 @@ const Dashboard = () => {
         </ul>
       </div>
 
-      <div className="flex-1 p-4 bg-white">
+      <div className="flex-1 p-4 ">
         <Outlet />
       </div>
     </div>

@@ -2,9 +2,11 @@ import React, { useState, useEffect } from "react";
 import { FaUserAlt } from "react-icons/fa"; // React Icon for teacher avatar
 import { Link, useParams } from "react-router-dom";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
+import useAuth from "../../hooks/useAuth";
 
 const ClassDetails = () => {
   const { id } = useParams();
+  const {setClassItem} = useAuth()
   const [classInfo, setClassInfo] = useState(null);
   const [assignments, setAssignments] = useState([]);
   const axiosSecure = useAxiosSecure();
@@ -15,6 +17,7 @@ const ClassDetails = () => {
       .get(`/class-details/${id}`)
       .then((res) => {
         setClassInfo(res.data);
+        setClassItem(res.data)
       })
       .catch((error) => {
         console.log(error.message);

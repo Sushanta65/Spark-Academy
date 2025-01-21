@@ -1,56 +1,76 @@
 import { useEffect, useState } from "react";
-import useAxiosPublic, { axiosPublic } from "../hooks/useAxiosPublic";
+import useAxiosPublic from "../hooks/useAxiosPublic";
 import { Link } from "react-router-dom";
 
-
-
 const Classes = () => {
-const [classes, setClasses] = useState([])
-const axiosPublic = useAxiosPublic()
+  const [classes, setClasses] = useState([]);
+  const axiosPublic = useAxiosPublic();
 
-    useEffect(() => {
-      axiosPublic.get('/teacher-classes')
-      .then(res => {
-        setClasses(res.data)
-      })
-    }, [axiosPublic])
-  
+  useEffect(() => {
+    axiosPublic.get("/teacher-classes").then((res) => {
+      setClasses(res.data);
+    });
+  }, [axiosPublic]);
+
   return (
-    <div className="min-h-screen  py-10 px-6">
-      <h1 className="text-3xl font-bold text-center mb-8" style={{ color: '#0D9488' }}>
-        Approved Classes
-      </h1>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {classes
-          .filter((cls) => cls.status === "approved")
-          .map((cls) => (
-            <div key={cls._id} className="card bg-white shadow-md rounded-lg overflow-hidden">
-              <img
-                src={cls.image}
-                alt={cls.title}
-                className="w-full h-48 object-cover"
-              />
-              <div className="p-4">
-                <h2 className="text-xl font-semibold mb-2">{cls.title}</h2>
-                <p className="text-gray-600 text-sm mb-2">
-                  <span className="font-medium">Teacher:</span> {cls.name}
-                </p>
-                <p className="text-gray-600 text-sm mb-4">{cls.description}</p>
-                <p className="text-gray-700 font-medium">
-                  Price: <span className="text-teal-600">${cls.price}</span>
-                </p>
-                <p className="text-gray-600 text-sm mb-4">
-                  Total Enrollments: <span className="font-semibold">{cls.enrolled}</span>
-                </p>
-                <Link to={`/class/${cls._id}`}
-                  className="btn w-full"
-                  style={{ backgroundColor: '#0D9488', color: 'white' }}
-                >
-                  Enroll
-                </Link>
+    <div className="container mx-auto min-h-screen bg-gray-100 py-12 px-6">
+      {/* Header Section */}
+      <header className="bg-gradient-to-r from-teal-500 to-cyan-500 text-white py-12 rounded-lg shadow-lg text-center mb-12">
+        <h1 className="text-4xl font-extrabold mb-4">Explore Approved Classes</h1>
+        <p className="text-lg font-medium">
+          Join our top-notch classes and start your learning journey today!
+        </p>
+      </header>
+
+      {/* Classes Section */}
+      <div className="container mx-auto">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+          {classes
+            .filter((cls) => cls.status === "approved")
+            .map((cls) => (
+              <div
+                key={cls._id}
+                className="card bg-white shadow-lg rounded-lg overflow-hidden transition-transform transform hover:scale-105"
+              >
+                {/* Image Section */}
+                <div className="p-2">
+                <img
+                  src={cls.image}
+                  alt={cls.title}
+                  className="w-full h-56 object-cover"
+                />
+                </div>
+
+                {/* Content Section */}
+                <div className="p-3">
+                  <h2 className="text-xl font-bold text-gray-800 mb-3">
+                    {cls.title}
+                  </h2>
+                  <p className="text-gray-600 text-sm mb-2">
+                    <span className="font-semibold">Teacher:</span> {cls.name}
+                  </p>
+                  <p className="text-gray-600 text-sm mb-4">{cls.description}</p>
+                  <div className="flex justify-between items-center mb-4">
+                    <p className="text-lg font-bold text-teal-600">
+                      ${cls.price}
+                    </p>
+                    <p className="text-sm text-gray-600">
+                      <span className="font-semibold">{cls.enrolled}</span>{" "}
+                      Enrolled
+                    </p>
+                  </div>
+
+                  {/* Enroll Button */}
+                  <Link
+                    to={`/class/${cls._id}`}
+                    className="btn w-full bg-teal-500 hover:bg-teal-600 text-white font-semibold py-2 rounded-lg"
+                  >
+                    Enroll Now
+                  </Link>
+                </div>
               </div>
-            </div>
-          ))}
+            ))}
+        </div>
       </div>
     </div>
   );

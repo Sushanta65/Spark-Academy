@@ -19,6 +19,7 @@ const AuthProvider = ({ children }) => {
   const [loading, setLoading] = useState(true);
   const [userRole, setUserRole] = useState('')
   const axiosPublic = useAxiosPublic();
+  const [classItem, setClassItem] = useState([])
 
   const provider = new GoogleAuthProvider();
 
@@ -77,7 +78,9 @@ const AuthProvider = ({ children }) => {
     user,
     setLoading,
     loading,
-    userRole
+    userRole,
+    setClassItem,
+    classItem
   };
 
   

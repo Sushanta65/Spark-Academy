@@ -24,7 +24,7 @@ const Navbar = () => {
 
 
   return (
-    <>{userRole === 'admin' || <div className="navbar bg-white shadow-md w-full">
+    <>{userRole === 'admin' || <div className="navbar bg-white z-50 w-full">
       <div className="container mx-auto flex justify-between items-center">
         {/* Logo */}
         <div className="flex items-center">
