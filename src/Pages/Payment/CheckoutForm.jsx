@@ -78,10 +78,12 @@ useEffect(() => {
             axiosSecure.post('/payments', paymentData)
             .then(res => {
               if(res.data.insertedId){
-                
+
+                const { _id, ...classWithoutId } = classItem;
                 const enrollInfo = {
                   studentEmail: user?.email,
-                  ...classItem
+                  classId: _id,
+                  ...classWithoutId
                 }
                 axiosSecure.post('/enrolled-classes', enrollInfo)
                 .then(res => {
@@ -92,10 +94,19 @@ useEffect(() => {
                       icon: "success",
                       draggable: true
                     });
-                    console.log(res.data)
+                    console.log(res)
                     navigate('/dashboard/my-enroll')
                   }
+                  if(res.data.message === 'already-enrolled'){
+                    Swal.fire({
+                      icon: "error",
+                      title: "Oops...",
+                      text: "You Already Enrolled in This Course!",
+                      footer: 'Try another class.'
+                    });
+                  }
                 })
+              
                 
               }
             })
