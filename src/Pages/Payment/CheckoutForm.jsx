@@ -16,7 +16,7 @@ const CheckoutForm = () => {
  const navigate = useNavigate()
  
 
-
+console.log(user)
 
 useEffect(() => {
   axiosSecure.post('/create-payment-intent', {price: classItem.price})
@@ -78,13 +78,25 @@ useEffect(() => {
             axiosSecure.post('/payments', paymentData)
             .then(res => {
               if(res.data.insertedId){
-                Swal.fire({
-                  title: "Your Payment Successfull.",
-                  text: `Your TrnxId: ${paymentIntent.id}`,
-                  icon: "success",
-                  draggable: true
-                });
-                navigate('/dashboard/my-enroll')
+                
+                const enrollInfo = {
+                  studentEmail: user?.email,
+                  ...classItem
+                }
+                axiosSecure.post('/enrolled-classes', enrollInfo)
+                .then(res => {
+                  if(res.data.insertedId){
+                    Swal.fire({
+                      title: "Your Payment Successfull. And You Enrolled In The Class",
+                      text: `Your TrnxId: ${paymentIntent.id}`,
+                      icon: "success",
+                      draggable: true
+                    });
+                    console.log(res.data)
+                    navigate('/dashboard/my-enroll')
+                  }
+                })
+                
               }
             })
 

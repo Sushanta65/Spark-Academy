@@ -18,7 +18,7 @@ const ClassDetails = () => {
         setSelectedClass(res.data)
     })
   }, [id, axiosSecure])
-  // Dummy data, replace with actual data from API/database
+  
   const classProgress = {
     totalEnrollment: 25,
     totalAssignments: 5,

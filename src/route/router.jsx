@@ -18,6 +18,7 @@ import ClassDetailsStudent from "../Pages/Student/ClassDetailsStudent";
 import StudentProfile from "../Pages/Student/Profile";
 import Payment from "../Pages/Payment/Payment";
 import MyEnrolled from "../Pages/Student/MyEnrolled";
+import MyEnrollClassDetails from "../Pages/Student/MyEnrollClassDetails";
 
 
 const router = createBrowserRouter([
@@ -76,6 +77,10 @@ const router = createBrowserRouter([
                     {
                         path: '/dashboard/my-enroll',
                         element: <MyEnrolled></MyEnrolled>
+                    },
+                    {
+                        path: '/dashboard/myenroll-class/:id',
+                        element: <MyEnrollClassDetails></MyEnrollClassDetails>
                     }
                     
                 ]

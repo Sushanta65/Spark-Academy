@@ -8,11 +8,10 @@ const ClassDetails = () => {
   const { id } = useParams();
   const {setClassItem} = useAuth()
   const [classInfo, setClassInfo] = useState(null);
-  const [assignments, setAssignments] = useState([]);
   const axiosSecure = useAxiosSecure();
 
   useEffect(() => {
-    // Fetch class info
+   
     axiosSecure
       .get(`/class-details/${id}`)
       .then((res) => {
@@ -23,15 +22,6 @@ const ClassDetails = () => {
         console.log(error.message);
       });
 
-    // Fetch assignments for this class
-    axiosSecure
-      .get(`/assignments/${id}`)
-      .then((res) => {
-        setAssignments(res.data);
-      })
-      .catch((error) => {
-        console.log(error.message);
-      });
   }, [id]);
 
   if (!classInfo) {
@@ -92,42 +82,7 @@ const ClassDetails = () => {
     </Link>
   </div>
 
-  {/* Assignments Section */}
-  <div className="bg-white p-6 rounded-lg shadow-lg">
-    <h2 className="text-xl sm:text-2xl font-semibold text-gray-800 mb-4">Assignments</h2>
-    {assignments.length > 0 ? (
-      <div className="overflow-x-auto">
-        <table className="table-auto w-full text-sm border-collapse">
-          <thead className="bg-gray-100 text-gray-800">
-            <tr>
-              <th className="p-4 text-left font-semibold">Assignment Title</th>
-              <th className="p-4 text-left font-semibold">Description</th>
-              <th className="p-4 text-left font-semibold">Deadline</th>
-              <th className="p-4 text-left font-semibold">Marks</th>
-              <th className="p-4 text-center font-semibold">Action</th>
-            </tr>
-          </thead>
-          <tbody>
-            {assignments.map((assignment) => (
-              <tr key={assignment._id} className="hover:bg-gray-50 border-b">
-                <td className="p-4">{assignment.title}</td>
-                <td className="p-4">{assignment.description}</td>
-                <td className="p-4">{assignment.deadline}</td>
-                <td className="p-4">{assignment.marks}</td>
-                <td className="p-4 text-center">
-                  <button className="px-4 py-2 bg-teal-500 text-white rounded-md hover:bg-teal-600 transition">
-                    Submit
-                  </button>
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
-    ) : (
-      <p className="text-gray-600">No assignments available for this class.</p>
-    )}
-  </div>
+
 </div>
 
   );
