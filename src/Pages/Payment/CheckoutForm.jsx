@@ -94,6 +94,11 @@ useEffect(() => {
                       icon: "success",
                       draggable: true
                     });
+                    axiosSecure.patch(`/teacher-class/${classItem._id}`, {enrolled: classItem.enrolled,
+                    })
+                    .then(res => {
+                      console.log('enrolled updated', res)
+                    })
                     console.log(res)
                     navigate('/dashboard/my-enroll')
                   }

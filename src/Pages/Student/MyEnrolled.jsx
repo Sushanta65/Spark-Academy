@@ -39,7 +39,7 @@ const MyEnrolled = () => {
               </p>
               <p className="text-gray-600 text-sm mb-4">{cls.description}</p>
               <Link
-                to={`/dashboard/myenroll-class/${cls.classId}`}
+                to={`/dashboard/myenroll-class/${cls._id}`}
                 className="btn w-full mt-4 bg-teal-600 text-white"
               >
                 Continue

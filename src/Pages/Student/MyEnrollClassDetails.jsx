@@ -13,23 +13,26 @@ const MyEnrollClassDetails = () => {
     axiosSecure
       .get(`/enrolled-class/${id}`)
       .then((res) => {
-        console.log("enrolled class from details", res.data);
         setEnrolledClass(res.data);
       })
       .catch((error) => {
         console.log(error.message);
       });
 
-    // Fetch assignments for this class
-    axiosSecure
-      .get(`/assignments/${id}`)
-      .then((res) => {
-        setAssignments(res.data);
-      })
-      .catch((error) => {
-        console.log(error.message);
-      });
-  }, [id]);
+  }, [axiosSecure, id]);
+
+  useEffect(() => {
+    if (enrolledClass && enrolledClass.classId) {
+      axiosSecure
+        .get(`/assignments/${enrolledClass.classId}`)
+        .then((res) => {
+          setAssignments(res.data);
+        })
+        .catch((error) => {
+          console.log(error.message);
+        });
+    }
+  }, [axiosSecure, enrolledClass]);
 
   return (
     <div className="min-h-screen bg-gray-100 py-10 px-6">
