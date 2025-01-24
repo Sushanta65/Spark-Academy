@@ -75,7 +75,7 @@ const Signup = () => {
   };
 
   const handleGoogleSignIn = () => {
-    googleSignIn();
+    googleSignIn(navigate);
   };
 
   return (

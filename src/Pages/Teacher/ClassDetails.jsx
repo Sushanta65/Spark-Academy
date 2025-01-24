@@ -19,11 +19,6 @@ const ClassDetails = () => {
     })
   }, [id, axiosSecure])
   
-  const classProgress = {
-    totalEnrollment: 25,
-    totalAssignments: 5,
-    totalSubmissions: 20,
-  };
 
   useEffect(() => {
     axiosSecure.get(`/assignments/${id}`)
@@ -56,7 +51,7 @@ const ClassDetails = () => {
 
         <div className="card p-6 bg-white shadow-lg rounded-lg">
           <h3 className="text-xl font-semibold">Total Submissions</h3>
-          <p className="text-2xl font-bold">{classProgress.totalSubmissions}</p>
+          <p className="text-2xl font-bold">{}</p>
         </div>
       </div>
 
@@ -93,7 +88,7 @@ const ClassDetails = () => {
               <td>{assignment.description}</td>
               <td>{assignment.marks}</td>
               <td>{assignment.deadline}</td>
-              <td>0
+              <td>{assignment.submission}
               </td>
               <td>
                 <button className="btn btn-outline btn-warning btn-sm">

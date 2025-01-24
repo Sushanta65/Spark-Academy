@@ -8,7 +8,8 @@ const AssignmentModal = ({ closeModal, classId }) => {
     deadline: '',
     description: '',
     classId,
-    marks: 0
+    submission: 0,
+    mark: 0
   });
 
   const handleInputChange = (e) => {

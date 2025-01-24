@@ -33,7 +33,7 @@ const AuthProvider = ({ children }) => {
     return signInWithEmailAndPassword(auth, email, password);
   };
 
-  const googleSignIn = () => {
+  const googleSignIn = (navigate) => {
     signInWithPopup(auth, provider)
       .then((data) => {
         const newUser = {
@@ -46,6 +46,7 @@ const AuthProvider = ({ children }) => {
           console.log(res);
           setUser(data.user)
         });
+        navigate('/')
       })
       .catch((error) => {
         Swal.fire({

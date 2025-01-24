@@ -47,8 +47,8 @@ const location = useLocation()
   };
 
   const handleGoogleSignIn = () => {
-    googleSignIn()
-    navigate('/')
+    googleSignIn(navigate)
+    
   };
 
   return (
