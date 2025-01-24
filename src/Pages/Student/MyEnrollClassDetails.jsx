@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
 import useAuth from "../../hooks/useAuth";
 import Swal from "sweetalert2";
+import ReactStars from "react-rating-stars-component";
 
 const MyEnrollClassDetails = () => {
   const { id } = useParams();
@@ -11,6 +12,9 @@ const MyEnrollClassDetails = () => {
   const [assignments, setAssignments] = useState([]);
   const {user} = useAuth()
   const [assignmentSubmitLink, setAssignmentSubmitLink] = useState('')
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [review, setReview] = useState("");
+  const [rating, setRating] = useState(0);
 
   useEffect(() => {
     // Fetch class info
@@ -47,7 +51,6 @@ const MyEnrollClassDetails = () => {
     }
 
    
-
     const submissionData = { assignmentId, studentEmail: user?.email, assignmentSubmitLink };
 
     axiosSecure
@@ -73,9 +76,54 @@ const MyEnrollClassDetails = () => {
       });
   };
 
+
+  const openModal = () => {
+    setIsModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setIsModalOpen(false);
+    setReview("");
+    setRating(0);
+  };
+
+
+  const handleSubmitReview = () => {
+    if (!review || rating === 0) {
+      Swal.fire("Error", "Please provide both a review and a star rating.", "error");
+      return;
+    }
+
+    const reviewData = {
+      classId: enrolledClass.classId,
+      studentEmail: user?.email,
+      review,
+      rating,
+    };
+
+    axiosSecure
+      .post("/submit-review", reviewData)
+      .then((res) => {
+        Swal.fire(
+          "Thank You!",
+          "Your teaching evaluation report has been submitted.",
+          "success"
+        );
+        closeModal();
+      })
+      .catch((err) => {
+        Swal.fire("Error", "Something went wrong. Please try again.", "error");
+      });
+  };
+
   return (
     <div className="min-h-screen bg-gray-100 py-10 px-6">
       {/* Class Details Section */}
+      <div className="mt-8 flex justify-end">
+          <button onClick={openModal} className="btn btn-primary">
+            Teaching Evaluation Report
+          </button>
+        </div>
       {enrolledClass && (
         <div className="max-w-4xl mx-auto bg-white rounded-lg shadow-md p-6 mb-8">
           <div className="flex items-center">
@@ -150,6 +198,36 @@ const MyEnrollClassDetails = () => {
           </p>
         )}
       </div>
+      {isModalOpen && (
+          <div className="modal modal-open">
+            <div className="modal-box">
+              <h3 className="font-bold text-lg mb-4">
+                Teaching Evaluation Report
+              </h3>
+              <p className="mb-2">Rate your experience:</p>
+              <ReactStars
+                count={5}
+                onChange={(newRating) => setRating(newRating)}
+                size={30}
+                activeColor="#ffd700"
+              />
+              <textarea
+                className="textarea textarea-bordered w-full mt-4"
+                placeholder="Write your review here..."
+                value={review}
+                onChange={(e) => setReview(e.target.value)}
+              />
+              <div className="modal-action">
+                <button onClick={closeModal} className="btn btn-outline">
+                  Cancel
+                </button>
+                <button onClick={handleSubmitReview} className="btn btn-primary">
+                  Submit
+                </button>
+              </div>
+            </div>
+          </div>
+        )}
     </div>
   );
 };
