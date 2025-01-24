@@ -46,7 +46,11 @@ const MyEnrollClassDetails = () => {
     console.log(assignmentId)
 
     if (!assignmentSubmitLink) {
-      alert('Please provide a submission link!');
+      Swal.fire({
+        title: "Please Provide Submission Link.",
+        icon: "error",
+        draggable: true
+      });
       return;
     }
 
@@ -63,6 +67,7 @@ const MyEnrollClassDetails = () => {
             icon: "success",
             draggable: true
           });
+          setAssignmentSubmitLink('')
         }
       })
       .catch((err) => {
@@ -72,6 +77,7 @@ const MyEnrollClassDetails = () => {
             icon: "error",
             draggable: true
           });
+          setAssignmentSubmitLink('')
         }
       });
   };
