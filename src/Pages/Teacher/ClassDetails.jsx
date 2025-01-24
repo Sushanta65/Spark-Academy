@@ -29,11 +29,13 @@ const ClassDetails = () => {
     .catch(error => {
         console.log(error.message)
     })
-  }, [])
+  }, [axiosSecure, id])
+
+  const totalSubmissions = assignments.reduce((totalSubmission, assignment) => totalSubmission + (assignment.submission || 0), 0);
 
   const openModal = () => setIsModalOpen(true);
   const closeModal = () => setIsModalOpen(false);
-  console.log('assignment', assignments)
+  
   return (
     <div className="container mx-auto p-4">
         <h2>{selectedClass.title}</h2>
@@ -51,7 +53,7 @@ const ClassDetails = () => {
 
         <div className="card p-6 bg-white shadow-lg rounded-lg">
           <h3 className="text-xl font-semibold">Total Submissions</h3>
-          <p className="text-2xl font-bold">{}</p>
+          <p className="text-2xl font-bold">{totalSubmissions}</p>
         </div>
       </div>
 

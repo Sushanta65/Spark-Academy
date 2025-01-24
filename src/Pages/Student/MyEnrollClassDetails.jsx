@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
 import useAuth from "../../hooks/useAuth";
+import Swal from "sweetalert2";
 
 const MyEnrollClassDetails = () => {
   const { id } = useParams();
@@ -51,8 +52,25 @@ const MyEnrollClassDetails = () => {
 
     axiosSecure
       .post('/submit-assignment', submissionData)
-      .then((res) => console.log(res.data.message || 'Submission successful'))
-      .catch((err) => console.log(err.response.data.message || 'Submission failed'));
+      .then((res) => {
+        console.log(res)
+        if(res.data.message === 'Submission-successful!'){
+          Swal.fire({
+            title: "Assignment Submited Successfully.",
+            icon: "success",
+            draggable: true
+          });
+        }
+      })
+      .catch((err) => {
+        if(err.response.data.message === 'Already-submitted'){
+          Swal.fire({
+            title: "You Alredy Submited The Assignment.",
+            icon: "error",
+            draggable: true
+          });
+        }
+      });
   };
 
   return (

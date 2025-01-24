@@ -1,15 +1,16 @@
-import { useEffect, useState } from 'react';
-import useAxiosSecure from '../hooks/useAxiosSecure';
+import { useEffect, useState } from "react";
+import useAxiosSecure from "../hooks/useAxiosSecure";
+import Swal from "sweetalert2";
 
 const AssignmentModal = ({ closeModal, classId }) => {
-    const axiosSecure = useAxiosSecure()
+  const axiosSecure = useAxiosSecure();
   const [assignment, setAssignment] = useState({
-    title: '',
-    deadline: '',
-    description: '',
+    title: "",
+    deadline: "",
+    description: "",
     classId,
     submission: 0,
-    mark: 0
+    mark: 0,
   });
 
   const handleInputChange = (e) => {
@@ -19,22 +20,29 @@ const AssignmentModal = ({ closeModal, classId }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Submit the assignment to the database
 
-    axiosSecure.post('/assignments', assignment)
-    .then(res => {
-        console.log(res)
-    })
-    .catch(error => {
-        console.log(error.message)
-    })
-
-
-    console.log(assignment);
-    closeModal(); // Close the modal after submission
-  };
+    axiosSecure
+      .post("/assignments", assignment)
+      .then((res) => {
+        if (res.data.insertedId) {
+          Swal.fire({
+            title: "Assignment Added Successfully.",
+            icon: "success",
+            draggable: true,
+          });
+        }
+      })
+      .catch(() => {
+        Swal.fire({
+          title: "Something Went Wrong to Create Assignment",
+          icon: "error",
+          draggable: true,
+        });
+      });
 
   
+    closeModal(); 
+  };
 
   return (
     <div className="fixed inset-0 flex justify-center items-center bg-gray-800 bg-opacity-50 z-50">
@@ -42,7 +50,9 @@ const AssignmentModal = ({ closeModal, classId }) => {
         <h2 className="text-2xl font-semibold mb-4">Create New Assignment</h2>
         <form onSubmit={handleSubmit}>
           <div className="mb-4">
-            <label className="block text-sm font-medium">Assignment Title</label>
+            <label className="block text-sm font-medium">
+              Assignment Title
+            </label>
             <input
               type="text"
               name="title"
@@ -53,7 +63,9 @@ const AssignmentModal = ({ closeModal, classId }) => {
             />
           </div>
           <div className="mb-4">
-            <label className="block text-sm font-medium">Assignment Deadline</label>
+            <label className="block text-sm font-medium">
+              Assignment Deadline
+            </label>
             <input
               type="date"
               name="deadline"
@@ -64,7 +76,9 @@ const AssignmentModal = ({ closeModal, classId }) => {
             />
           </div>
           <div className="mb-4">
-            <label className="block text-sm font-medium">Assignment Description</label>
+            <label className="block text-sm font-medium">
+              Assignment Description
+            </label>
             <textarea
               name="description"
               value={assignment.description}
