@@ -103,22 +103,36 @@ const MyEnrollClassDetails = () => {
     const reviewData = {
       classId: enrolledClass.classId,
       studentEmail: user?.email,
+      studentName : user?.displayName,
+      studentImage: user?.photoURL,
+      classTitle: enrolledClass.title,
       review,
       rating,
     };
 
     axiosSecure
-      .post("/submit-review", reviewData)
+      .post("/reviews", reviewData)
       .then((res) => {
-        Swal.fire(
-          "Thank You!",
-          "Your teaching evaluation report has been submitted.",
-          "success"
-        );
-        closeModal();
+        if(res.data.insertedId){
+          Swal.fire(
+            "Thank You!",
+            "Your Valuable Feedback is Submited",
+            "success"
+          );
+          closeModal();
+          console.log(res)
+        }
+        if(res.data.message === 'review-exist'){
+          Swal.fire(
+            "Ohh!",
+            "You Already Wrote a Feedback for the Class.",
+            "error"
+          );
+        }
       })
       .catch((err) => {
         Swal.fire("Error", "Something went wrong. Please try again.", "error");
+        console.log('err', err)
       });
   };
 
