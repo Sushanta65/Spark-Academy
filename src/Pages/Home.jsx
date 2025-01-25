@@ -4,6 +4,7 @@ import AllClasses from "../components/Classes";
 import useAuth from "../hooks/useAuth";
 import { useEffect } from "react";
 import Reviews from "../components/HomeComponents/Reviews";
+import StatisticsSection from "../components/HomeComponents/StatisticsSection";
 
 const Home = () => {
     const {userRole, loading} = useAuth()
@@ -22,6 +23,7 @@ const Home = () => {
 
     return (
         <div className='container mx-auto'>
+            <StatisticsSection></StatisticsSection>
             <Reviews></Reviews>
         </div>
     );
