@@ -5,6 +5,9 @@ import useAuth from "../hooks/useAuth";
 import { useEffect } from "react";
 import Reviews from "../components/HomeComponents/Reviews";
 import StatisticsSection from "../components/HomeComponents/StatisticsSection";
+import InspireTeachersSection from "../components/HomeComponents/InspireTeachersSection";
+import PopularClasses from "../components/HomeComponents/PopularClasses";
+import PartnerSection from "../components/HomeComponents/PartnerSection";
 
 const Home = () => {
     const {userRole, loading} = useAuth()
@@ -22,8 +25,11 @@ const Home = () => {
     
 
     return (
-        <div className='container mx-auto'>
+        <div>
+            <PartnerSection></PartnerSection>
             <StatisticsSection></StatisticsSection>
+            <InspireTeachersSection></InspireTeachersSection>
+            <PopularClasses></PopularClasses>
             <Reviews></Reviews>
         </div>
     );

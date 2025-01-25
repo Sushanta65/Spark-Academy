@@ -23,11 +23,19 @@ const Reviews = () => {
   }, [axiosSecure]);
 
   return (
-    <div className="py-10 px-6">
+    <div className="pb-16 px-6">
       <div className="container mx-auto max-w-4xl">
-        <h2 className="text-3xl font-bold text-center text-teal-600 mb-8">
-          What Students Are Saying
-        </h2>
+      <div className="text-center pt-20">
+      <div className="text-center pb-20">
+          <div className="">
+            <h2 className="text-4xl font-semibold text-teal-600 px-4">
+              What Our Students Say
+            </h2>
+            <p className="my-4">Students share how our platform helped them grow academically and professionally.</p>
+            <div className="text-center  border-b-2 border-teal-600 w-28 mx-auto "></div>
+          </div>
+        </div>
+        </div>
         {reviews.length > 0 ? (
           <Swiper
             navigation

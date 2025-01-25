@@ -69,8 +69,8 @@ const MyClasses = () => {
   }
 
   return (
-    <div className="min-h-screen bg-gray-100 p-4">
-      <div className="max-w-6xl mx-auto bg-white shadow-lg rounded-lg p-6">
+    <div className="min-h-screen  p-4">
+      <div className="max-w-6xl mx-auto">
         <h1 className="text-2xl font-bold text-teal-600 mb-6 text-center">
           My Classes
         </h1>

@@ -13,7 +13,7 @@ const Classes = () => {
   }, [axiosPublic]);
 
   return (
-    <div className="container mx-auto min-h-screen bg-gray-100 py-12 px-6">
+    <div className="container mx-auto min-h-screen  py-12 px-6">
       {/* Header Section */}
       <header className="bg-gradient-to-r from-teal-500 to-cyan-500 text-white py-12 rounded-lg shadow-lg text-center mb-12">
         <h1 className="text-4xl font-extrabold mb-4">Explore Approved Classes</h1>
@@ -33,7 +33,7 @@ const Classes = () => {
                 className="card bg-white shadow-lg rounded-lg overflow-hidden transition-transform transform hover:scale-105"
               >
                 {/* Image Section */}
-                <div className="p-2">
+                <div className="p-3">
                 <img
                   src={cls.image}
                   alt={cls.title}
@@ -42,7 +42,7 @@ const Classes = () => {
                 </div>
 
                 {/* Content Section */}
-                <div className="p-3">
+                <div className="p-5">
                   <h2 className="text-xl font-bold text-gray-800 mb-3">
                     {cls.title}
                   </h2>
