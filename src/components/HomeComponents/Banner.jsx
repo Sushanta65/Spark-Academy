@@ -56,7 +56,7 @@ const Banner = () => {
               />
               <div className="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center text-center px-6">
                 <div>
-                  <h1 className="text-6xl font-bold text-gray-300 mb-4 w-[90%] mx-auto leading-snug">
+                  <h1 className="text-3xl md:text-6xl font-bold text-gray-300 mb-4 w-[90%] mx-auto leading-snug">
                     {slide.title}
                   </h1>
                   <p className="text-lg text-gray-300 mb-6">{slide.description}</p>

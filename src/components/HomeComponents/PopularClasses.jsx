@@ -14,7 +14,6 @@ const PopularClasses = () => {
     queryKey: ["popularClasses"],
     queryFn: async () => {
       const { data } = await axiosSecure.get("/teacher-classes");
-
       return data.sort((a, b) => b.enrolled - a.enrolled).slice(0, 6);
     },
   });
@@ -40,15 +39,18 @@ const PopularClasses = () => {
         {/* Swiper Slider for Popular Classes */}
         <Swiper
           spaceBetween={20} // Space between slides
-          slidesPerView={3} // Show 3 items at once
+          slidesPerView={1} // Default: Show 1 item at once on mobile
           autoplay={{ delay: 2000, disableOnInteraction: false }}
           modules={[Autoplay]}
           breakpoints={{
-            1024: {
-              slidesPerView: 2, // Show 2 items on medium screens
+            640: {
+              slidesPerView: 1, // Show 1 item on small screens (mobile)
             },
             768: {
-              slidesPerView: 1, // Show 1 item on small screens
+              slidesPerView: 2, // Show 2 items on medium screens (tablets)
+            },
+            1024: {
+              slidesPerView: 3, // Show 3 items on large screens (desktops)
             },
           }}
         >

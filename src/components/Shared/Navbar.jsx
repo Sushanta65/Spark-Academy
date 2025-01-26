@@ -99,7 +99,7 @@ const Navbar = () => {
           </label>
           <ul
             tabIndex={0}
-            className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-white rounded-box w-52 right-5"
+            className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-white rounded-box w-52 right-5 z-50"
           >
             {links.map((link) => (
               <li key={link.path}>

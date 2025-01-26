@@ -9,6 +9,8 @@ import InspireTeachersSection from "../components/HomeComponents/InspireTeachers
 import PopularClasses from "../components/HomeComponents/PopularClasses";
 import PartnerSection from "../components/HomeComponents/PartnerSection";
 import Banner from "../components/HomeComponents/Banner";
+import FeaturedCourses from "../components/HomeComponents/Blogs";
+import FAQs from "../components/HomeComponents/FAQs";
 
 const Home = () => {
     const {userRole, loading} = useAuth()
@@ -32,7 +34,9 @@ const Home = () => {
             <StatisticsSection></StatisticsSection>
             <PopularClasses></PopularClasses>
             <InspireTeachersSection></InspireTeachersSection>
+            <FeaturedCourses></FeaturedCourses>
             <Reviews></Reviews>
+            <FAQs></FAQs>
         </div>
     );
 };

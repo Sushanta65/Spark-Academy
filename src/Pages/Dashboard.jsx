@@ -7,6 +7,7 @@ import {
   FaList,
   FaPlus,
   FaBook,
+  FaSignOutAlt,
 } from "react-icons/fa";
 import useAuth from "../hooks/useAuth";
 
@@ -114,10 +115,17 @@ const Dashboard = () => {
               </NavLink>
             </li>
           ))}
-          <div className="absolute bottom-20 text-center w-full"> 
-          <li className="bg-teal-800"><button onClick={signOutUser} className="btn btn-sm w-full rounded-none bg-teal-800 border-none text-white hover:bg-teal-900">Logout</button></li>
-          <li className="bg-teal-800"><button>Links</button></li>
-          </div>
+          <div className="absolute top-3 right-2 lg:right-0 lg:top-3/4 lg:bottom-20 text-center lg:w-full">
+      <li className="bg-teal-800">
+        <button
+          onClick={signOutUser}
+          className="btn btn-sm w-full rounded-none bg-teal-800 border-none text-white hover:bg-teal-900 flex items-center justify-center gap-2"
+        >
+          <FaSignOutAlt className="text-white" />
+          Logout
+        </button>
+      </li>
+    </div>
         </ul>
       </div>
 
