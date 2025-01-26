@@ -91,7 +91,7 @@ const router = createBrowserRouter([
             },
             {
                 path: '/class/:id',
-                element: <ClassDetailsStudent></ClassDetailsStudent>
+                element: <PrivateRoute><ClassDetailsStudent></ClassDetailsStudent></PrivateRoute>
             },
             {
                 path: '/teach-on-spark-academy',
@@ -99,7 +99,7 @@ const router = createBrowserRouter([
             },
             {
                 path: '/class/payment/:id',
-                element: <Payment></Payment>
+                element: <PrivateRoute><Payment></Payment></PrivateRoute>
             }
         ]
     }

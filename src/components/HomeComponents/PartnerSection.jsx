@@ -22,7 +22,7 @@ const partners = [
 
 const PartnerSection = () => {
   return (
-    <section className="bg-white py-20 mt-10">
+    <section className="bg-white py-20 pt-28">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
       <div className="text-center pb-20">
           <div className="">

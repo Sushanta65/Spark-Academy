@@ -8,11 +8,12 @@ import StatisticsSection from "../components/HomeComponents/StatisticsSection";
 import InspireTeachersSection from "../components/HomeComponents/InspireTeachersSection";
 import PopularClasses from "../components/HomeComponents/PopularClasses";
 import PartnerSection from "../components/HomeComponents/PartnerSection";
+import Banner from "../components/HomeComponents/Banner";
 
 const Home = () => {
     const {userRole, loading} = useAuth()
     const navigate = useNavigate()
-        // Check if user is an admin
+        
         if(loading){
             return (
                 <div>Loading</div>
@@ -26,10 +27,11 @@ const Home = () => {
 
     return (
         <div>
+            <Banner></Banner>
             <PartnerSection></PartnerSection>
             <StatisticsSection></StatisticsSection>
-            <InspireTeachersSection></InspireTeachersSection>
             <PopularClasses></PopularClasses>
+            <InspireTeachersSection></InspireTeachersSection>
             <Reviews></Reviews>
         </div>
     );
