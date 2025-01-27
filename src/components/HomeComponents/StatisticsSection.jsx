@@ -1,30 +1,29 @@
-import React, { useEffect, useState } from "react";
-import useAxiosSecure from "../../hooks/useAxiosSecure";
+import React from "react";
 import { FaUserGraduate, FaChalkboardTeacher, FaUsers } from "react-icons/fa";
-import educationImg from '../../assets/education.png'
+import { useQuery } from "@tanstack/react-query";
+import educationImg from "../../assets/education.png";
+import { axiosSecure } from "../../hooks/useAxiosSecure";
 
 const StatisticsSection = () => {
-  const axiosSecure = useAxiosSecure();
-  const [stats, setStats] = useState({});
+  const {
+    data: stats = {},
+    isLoading,
+    isError,
+  } = useQuery({
+    queryKey: ["statistics"],
+    queryFn: async () => {
+      const { data } = await axiosSecure.get("/statistics");
+      return data;
+    },
+  });
 
-  useEffect(() => {
-  
-    axiosSecure
-      .get("/statistics")
-      .then((res) => {
-        setStats(res.data)
-      })
-      .catch((err) => {
-        console.error( err.message);
-      });
-  }, [axiosSecure]);
+  if (isLoading) return <p>Loading...</p>;
+  if (isError) return <p>Error fetching data.</p>;
 
   return (
     <div className="py-12 my-20 w-full">
       <div className="container mx-auto flex flex-col md:flex-row items-center gap-8">
-      
         <div className="flex-1 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-1 gap-6">
-          
           <div className="card bg-white shadow-lg rounded-lg p-3 flex items-center gap-4">
             <FaUsers className="text-4xl text-teal-600" />
             <div>
@@ -34,7 +33,7 @@ const StatisticsSection = () => {
               </p>
             </div>
           </div>
-      
+
           <div className="card bg-white shadow-lg rounded-lg p-6 flex items-center gap-4">
             <FaChalkboardTeacher className="text-4xl text-teal-600" />
             <div>
@@ -44,7 +43,7 @@ const StatisticsSection = () => {
               </p>
             </div>
           </div>
-          
+
           <div className="card bg-white shadow-lg rounded-lg p-6 flex items-center gap-4">
             <FaUserGraduate className="text-4xl text-teal-600" />
             <div>
@@ -58,7 +57,6 @@ const StatisticsSection = () => {
           </div>
         </div>
 
-        {/* Right Side: Image */}
         <div className="flex-1">
           <img
             src={educationImg}

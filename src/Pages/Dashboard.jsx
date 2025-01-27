@@ -1,5 +1,5 @@
 
-import { NavLink, Outlet, useNavigate } from "react-router-dom";
+import { Link, NavLink, Outlet, useNavigate } from "react-router-dom";
 import {
   FaUser,
   FaChalkboardTeacher,
@@ -75,7 +75,7 @@ const Dashboard = () => {
       ...(userRole === "rejected"
         ? [
             {
-              path: "/dashboard/my-enroll-classes",
+              path: "/dashboard/my-enroll",
               name: "My Enroll Classes",
               icon: <FaBook />,
             },
@@ -125,6 +125,17 @@ const Dashboard = () => {
           Logout
         </button>
       </li>
+      {
+        userRole === "student" && <li className="bg-teal-800">
+        <Link
+          to='dashboard/payment-history'
+          className="btn btn-sm w-full rounded-none bg-teal-800 border-none text-white hover:bg-teal-900 flex items-center justify-center gap-2"
+        >
+          <FaSignOutAlt className="text-white" />
+          Payment History
+        </Link>
+      </li>
+      }
     </div>
         </ul>
       </div>

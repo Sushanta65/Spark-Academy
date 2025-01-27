@@ -4,7 +4,7 @@ import useAxiosSecure from "../../hooks/useAxiosSecure";
 import useAuth from "../../hooks/useAuth";
 
 const MyProfile = () => {
-    const {user} = useAuth()
+  const { user } = useAuth();
   const [userInfo, setUserInfo] = useState(null);
   const axiosSecure = useAxiosSecure();
 
@@ -20,15 +20,17 @@ const MyProfile = () => {
   }, []);
 
   if (!userInfo) {
-    return <div className="flex justify-center items-center h-screen">Loading...</div>;
+    return (
+      <div className="flex justify-center items-center h-screen">
+        Loading...
+      </div>
+    );
   }
 
   return (
     <div className="container mx-auto p-6 max-w-4xl">
-      {/* Profile Card */}
       <div className="bg-white p-6 rounded-lg shadow-lg mb-6">
         <div className="flex items-center space-x-6">
-          {/* Profile Image */}
           <div className="avatar">
             <div className="w-20 h-20 rounded-full overflow-hidden border-2 border-teal-500">
               {userInfo.photoURL ? (
@@ -43,7 +45,6 @@ const MyProfile = () => {
             </div>
           </div>
 
-          {/* User Info */}
           <div className="text-sm">
             <h1 className="text-lg font-bold text-teal-600">{userInfo.name}</h1>
             <p className="text-gray-600">Email: {userInfo.email}</p>
@@ -52,12 +53,13 @@ const MyProfile = () => {
         </div>
       </div>
 
-      {/* Welcome Section */}
       <div className="bg-teal-50 p-4 rounded-lg shadow-md">
-        <h2 className="text-teal-600 font-semibold text-sm mb-2">Welcome back, {userInfo.name}!</h2>
+        <h2 className="text-teal-600 font-semibold text-sm mb-2">
+          Welcome back, {userInfo.name}!
+        </h2>
         <p className="text-gray-500 text-xs">
-          Thank you for being a part of our platform. Explore your dashboard and manage your
-          profile here.
+          Thank you for being a part of our platform. Explore your dashboard and
+          manage your profile here.
         </p>
       </div>
     </div>

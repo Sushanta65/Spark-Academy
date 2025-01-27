@@ -137,11 +137,11 @@ const MyEnrollClassDetails = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gray-100 py-10 px-6">
-      {/* Class Details Section */}
-      <div className="mt-8 flex justify-end">
-          <button onClick={openModal} className="btn btn-primary">
-            Teaching Evaluation Report
+    <div className="min-h-screen px-6">
+    
+      <div className=" flex justify-end">
+          <button onClick={openModal} className="px-4 py-2 bg-teal-600 rounded-xl text-sm text-white my-10 hover:bg-teal-800 duration-300">
+            Write Review
           </button>
         </div>
       {enrolledClass && (
@@ -166,7 +166,7 @@ const MyEnrollClassDetails = () => {
         </div>
       )}
 
-      {/* Assignments Section */}
+     
       <div className="max-w-6xl mx-auto bg-white rounded-lg shadow-md p-6">
         <h2 className="text-xl sm:text-2xl font-semibold text-gray-800 mb-4">
           Assignments
@@ -197,7 +197,7 @@ const MyEnrollClassDetails = () => {
                     <td className="p-4">
                       <input
                         type="text"
-                        placeholder="Type here"
+                        placeholder="Enter Submission Link"
                         className="input input-bordered  w-full max-w-xs"
                         onChange={(e) => setAssignmentSubmitLink(e.target.value)}
                       />
@@ -221,7 +221,7 @@ const MyEnrollClassDetails = () => {
       {isModalOpen && (
           <div className="modal modal-open">
             <div className="modal-box">
-              <h3 className="font-bold text-lg mb-4">
+              <h3 className="font-bold text-lg mb-4 ">
                 Teaching Evaluation Report
               </h3>
               <p className="mb-2">Rate your experience:</p>
@@ -238,10 +238,10 @@ const MyEnrollClassDetails = () => {
                 onChange={(e) => setReview(e.target.value)}
               />
               <div className="modal-action">
-                <button onClick={closeModal} className="btn btn-outline">
+                <button onClick={closeModal} className="px-4 py-2 bg-red-500 text-white rounded-md hover:bg-red-600 transition">
                   Cancel
                 </button>
-                <button onClick={handleSubmitReview} className="btn btn-primary">
+                <button onClick={handleSubmitReview} className="px-4 py-2 bg-teal-500 text-white rounded-md hover:bg-teal-600 transition">
                   Submit
                 </button>
               </div>

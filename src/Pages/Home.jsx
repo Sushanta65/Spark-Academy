@@ -22,7 +22,7 @@ const Home = () => {
             )
         }
         if (userRole === "admin") {
-            navigate('/dashboard/my-profile')// Redirect to dashboard
+            navigate('/dashboard/my-profile')
         }
      
     

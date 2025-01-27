@@ -51,7 +51,7 @@ const Navbar = () => {
 
             {/* User Dropdown */}
             {user?.email && (
-              <li className="dropdown dropdown-hover relative">
+              <li className="dropdown dropdown-hover relative z-50">
                 <img
                   className="w-10 p-0 rounded-full cursor-pointer"
                   src={user.photoURL ? user.photoURL : userImg}

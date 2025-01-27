@@ -13,6 +13,7 @@ const AddClass = () => {
     title: "",
     name: user?.displayName || "",
     email: user?.email || "",
+    teacherPhoto: user?.photoURL || '',
     price: "",
     description: "",
     image: "",
@@ -33,7 +34,7 @@ const AddClass = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    // Validation for empty fields
+    
     if (!formData.title || !formData.price || !formData.description || !formData.image) {
       Swal.fire({
         icon: "error",

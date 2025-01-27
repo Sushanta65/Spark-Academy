@@ -59,7 +59,7 @@ const Banner = () => {
                   <h1 className="text-3xl md:text-6xl font-bold text-gray-300 mb-4 w-[90%] mx-auto leading-snug">
                     {slide.title}
                   </h1>
-                  <p className="text-lg text-gray-300 mb-6">{slide.description}</p>
+                  <p className="text-lg text-gray-300 my-10">{slide.description}</p>
                   <button className="btn bg-teal-500 text-white hover:bg-teal-600">
                     {slide.buttonText}
                   </button>

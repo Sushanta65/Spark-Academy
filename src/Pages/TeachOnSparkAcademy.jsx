@@ -124,9 +124,9 @@ const TeachOnSparkAcademy = () => {
   }
 
   return (
-    <div className="min-h-screen bg-gray-100 flex items-center justify-center">
+    <div className="py-20 bg-gray-100 flex items-center justify-center">
       <div className="w-full max-w-4xl bg-white p-8 rounded-lg shadow-lg">
-        {/* Header Section */}
+       
         <div className="text-center mb-8">
           <h1 className="text-4xl font-bold text-teal-600">
             Become a Teacher at Spark Academy
@@ -137,13 +137,13 @@ const TeachOnSparkAcademy = () => {
           </p>
         </div>
 
-        {/* Form Section */}
+        
         {requestStatus === "" && (
           <form
             onSubmit={handleSubmit}
             className="grid grid-cols-1 md:grid-cols-2 gap-6"
           >
-            {/* Name */}
+           
             <div className="form-control">
               <label htmlFor="name" className="label">
                 <span className="label-text text-gray-700 font-semibold">
@@ -160,7 +160,6 @@ const TeachOnSparkAcademy = () => {
               />
             </div>
 
-            {/* Email */}
             <div className="form-control">
               <label htmlFor="email" className="label">
                 <span className="label-text text-gray-700 font-semibold">
@@ -177,7 +176,7 @@ const TeachOnSparkAcademy = () => {
               />
             </div>
 
-            {/* Experience Level */}
+            
             <div className="form-control">
               <label htmlFor="experience" className="label">
                 <span className="label-text text-gray-700 font-semibold">
@@ -201,7 +200,7 @@ const TeachOnSparkAcademy = () => {
               </select>
             </div>
 
-            {/* Title */}
+            
             <div className="form-control">
               <label htmlFor="title" className="label">
                 <span className="label-text text-gray-700 font-semibold">
@@ -220,7 +219,7 @@ const TeachOnSparkAcademy = () => {
               />
             </div>
 
-            {/* Category */}
+            
             <div className="form-control md:col-span-2">
               <label htmlFor="category" className="label">
                 <span className="label-text text-gray-700 font-semibold">
@@ -246,7 +245,7 @@ const TeachOnSparkAcademy = () => {
               </select>
             </div>
 
-            {/* Submit Button */}
+          
             <div className="form-control md:col-span-2 mt-4">
               <button
                 type="submit"
@@ -259,9 +258,9 @@ const TeachOnSparkAcademy = () => {
         )}
         {requestStatus === "pending" && (
           <div>
-            <div className="flex flex-col items-center justify-center bg-gray-50 rounded-lg shadow-lg p-8">
+            <div className="flex flex-col items-center justify-center p-8">
               <h2 className="text-2xl capitalize text-green-600 pb-5">{requestStatus}</h2>
-              <h2 className="text-2xl font-bold text-teal-600 mb-2">
+              <h2 className="text-2xl font-bold text-teal-600 my-5">
                 Your Request is Under Review
               </h2>
               <p className="text-gray-600 text-center max-w-md">
@@ -274,8 +273,8 @@ const TeachOnSparkAcademy = () => {
         )}
         {requestStatus === "accepted" && (
           <div>
-            <div className="flex flex-col items-center justify-center bg-gray-50 rounded-lg shadow-lg p-8">
-              <h2 className="text-2xl font-bold text-green-600 mb-2">
+            <div className="flex flex-col items-center justify-center p-8">
+              <h2 className="text-2xl font-bold text-green-600 my-10">
                 Congratulations! 🎉
               </h2>
               <p className="text-gray-600 text-center max-w-md">
@@ -291,9 +290,9 @@ const TeachOnSparkAcademy = () => {
         )}
         {requestStatus === "rejected" && (
           <div>
-            <div className="flex flex-col items-center justify-center bg-gray-50 rounded-lg shadow-lg p-8">
+            <div className="flex flex-col items-center justify-center  p-8">
               
-              <h2 className="text-2xl font-bold text-red-600 mb-2">
+              <h2 className="text-2xl font-bold text-red-600 my-10">
                 Your Request Was Rejected 😞
               </h2>
               <p className="text-gray-600 text-center max-w-md">

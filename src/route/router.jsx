@@ -14,7 +14,7 @@ import MyClasses from "../Pages/Teacher/MyClasses";
 import ClassesAdmin from "../Pages/Admin/ClassesAdmin";
 import UpdateClass from "../Pages/Teacher/UpdateClass";
 import ClassDetails from "../Pages/Teacher/ClassDetails";
-import ClassDetailsStudent from "../Pages/Student/ClassDetailsStudent";
+import ClassDetailsStudent from "../Pages/Student/ClassDetails";
 import StudentProfile from "../Pages/Student/Profile";
 import Payment from "../Pages/Payment/Payment";
 import MyEnrolled from "../Pages/Student/MyEnrolled";

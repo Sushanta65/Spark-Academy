@@ -11,7 +11,6 @@ const SignIn = () => {
     password: '',
   });
 const navigate = useNavigate()
-const location = useLocation()
 
 
 
@@ -58,7 +57,7 @@ const location = useLocation()
           Welcome Back to Spark Academy
         </h2>
         <form onSubmit={handleSubmit} className="space-y-4">
-          {/* Email */}
+          
           <div className="form-control">
             <label htmlFor="email" className="label">
               <span className="label-text">Email</span>
@@ -75,7 +74,7 @@ const location = useLocation()
             />
           </div>
 
-          {/* Password */}
+          
           <div className="form-control">
             <label htmlFor="password" className="label">
               <span className="label-text">Password</span>
@@ -92,7 +91,7 @@ const location = useLocation()
             />
           </div>
 
-          {/* Submit Button */}
+         
           <div className="form-control mt-6">
             <button
               type="submit"
@@ -104,7 +103,7 @@ const location = useLocation()
           </div>
         </form>
 
-        {/* Google Sign-In Button */}
+       
         <div className="form-control mt-4">
           <button
             onClick={handleGoogleSignIn}
@@ -115,7 +114,7 @@ const location = useLocation()
           </button>
         </div>
 
-        {/* Redirect to Signup */}
+        
         <p className="text-center mt-4">
           Don’t have an account?{' '}
           <Link to="/signup" className="text-teal-600 font-bold hover:underline">

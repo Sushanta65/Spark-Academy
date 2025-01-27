@@ -11,7 +11,11 @@ const Users = () => {
   const navigate = useNavigate()
   // Fetch users from the backend
   useEffect(() => {
-    axiosSecure.get("/users").then((res) => {
+    axiosSecure.get("/users", {
+      headers: {
+        authorization: `Bearer ${localStorage.getItem('access-token')}`
+      }
+    }).then((res) => {
       setUsers(res.data);
     });
   }, [axiosSecure]);
@@ -56,6 +60,12 @@ const Users = () => {
 
   return (
     <div className="min-h-screen  p-4">
+      <div className="flex justify-between  mx-auto my-8 bg-white p-5 shadow-lg">
+        <div className="text-xl font-bold">Total User: <span className="text-teal-600"> {users.length}</span></div>
+        <div className="text-xl font-bold">Admin: <span className="text-teal-600">{users.filter(user => user.role === 'admin').length} </span></div>
+        <div></div>
+        
+      </div>
       <h1 className="text-xl font-semibold text-teal-600 text-center mb-4">
         All Users
       </h1>
