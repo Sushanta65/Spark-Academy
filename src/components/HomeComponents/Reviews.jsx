@@ -9,16 +9,14 @@ import ReactStars from "react-rating-stars-component";
 import { axiosSecure } from "../../hooks/useAxiosSecure";
 
 const Reviews = () => {
-  const { data: reviews = [], isLoading, isError } = useQuery({
-    queryKey: ["reviews"], // Unique key for the query
+  const { data: reviews = [], } = useQuery({
+    queryKey: ["reviews"],
     queryFn: async () => {
       const { data } = await axiosSecure.get("/reviews");
       return data;
     },
   });
 
-  if (isLoading) return <p>Loading...</p>;
-  if (isError) return <p>Error fetching feedbacks.</p>;
 
   return (
     <div className="pb-16 px-6">

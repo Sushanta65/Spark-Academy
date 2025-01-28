@@ -33,9 +33,9 @@ const FAQs = () => {
 
   const toggleTab = (id) => {
     if (activeTab === id) {
-      setActiveTab(null); // Close the tab if it's already open
+      setActiveTab(null); 
     } else {
-      setActiveTab(id); // Open the selected tab
+      setActiveTab(id); 
     }
   };
 
@@ -71,7 +71,7 @@ const FAQs = () => {
                 </div>
               </div>
 
-              {/* Answer Section */}
+          
               {activeTab === faq.id && (
                 <p className="text-gray-600 text-sm mt-4">{faq.answer}</p>
               )}

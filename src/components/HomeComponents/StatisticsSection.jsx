@@ -7,8 +7,6 @@ import { axiosSecure } from "../../hooks/useAxiosSecure";
 const StatisticsSection = () => {
   const {
     data: stats = {},
-    isLoading,
-    isError,
   } = useQuery({
     queryKey: ["statistics"],
     queryFn: async () => {
@@ -17,8 +15,6 @@ const StatisticsSection = () => {
     },
   });
 
-  if (isLoading) return <p>Loading...</p>;
-  if (isError) return <p>Error fetching data.</p>;
 
   return (
     <div className="py-12 my-20 w-full">

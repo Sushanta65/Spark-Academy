@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { FaUserCircle } from "react-icons/fa";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
 import useAuth from "../../hooks/useAuth";
+import { Helmet } from "react-helmet-async";
 
 const MyProfile = () => {
   const { user } = useAuth();
@@ -29,6 +30,9 @@ const MyProfile = () => {
 
   return (
     <div className="container mx-auto p-6 max-w-4xl">
+      <Helmet>
+        <title>My Profile | Spark Academy</title>
+      </Helmet>
       <div className="bg-white p-6 rounded-lg shadow-lg mb-6">
         <div className="flex items-center space-x-6">
           <div className="avatar">

@@ -3,6 +3,7 @@ import { MdAdd } from "react-icons/md"; // Add icon from React Icons
 import AssignmentModal from "../../components/AssignmentModal"; // Assume Modal is a separate component for the modal form
 import { useParams } from "react-router-dom";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
+import { Helmet } from "react-helmet-async";
 
 const ClassDetails = () => {
   const { id } = useParams();
@@ -40,6 +41,9 @@ const ClassDetails = () => {
 
   return (
     <div className="container mx-auto p-4">
+      <Helmet>
+        <title>Class Details | Spark Academy</title>
+      </Helmet>
       <h2>{selectedClass.title}</h2>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
         <div className="card p-6 bg-white shadow-lg rounded-lg">

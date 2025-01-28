@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
 import Swal from "sweetalert2";
 import useAxiosPublic from "../../hooks/useAxiosPublic";
+import { Helmet } from "react-helmet-async";
 
 const AddClass = () => {
   const { user, userRole } = useAuth();
@@ -75,6 +76,9 @@ const AddClass = () => {
 
   return (
     <div className="min-h-screen bg-gray-100 p-4 flex items-center justify-center">
+      <Helmet>
+              <title>Add Class | Spark Academy</title>
+            </Helmet>
       <div className="w-full max-w-4xl bg-white rounded-lg shadow-md p-6">
         <h2 className="text-xl font-bold text-teal-600 mb-6 text-center">
           Add a New Class

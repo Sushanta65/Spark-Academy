@@ -10,6 +10,7 @@ import {
   FaSignOutAlt,
 } from "react-icons/fa";
 import useAuth from "../hooks/useAuth";
+import { Helmet } from "react-helmet-async";
 
 
 const Dashboard = () => {
@@ -90,6 +91,9 @@ const Dashboard = () => {
 
   return (
     <div className="min-h-screen flex flex-col lg:flex-row  border-t-2 border-teal-600">
+      <Helmet>
+              <title>Dashboard | Spark Academy</title>
+            </Helmet>
       <div className="bg-teal-600 w-full lg:w-48 text-white relative">
         <div className="p-4 text-center font-bold border-b border-teal-500">
           Dashboard

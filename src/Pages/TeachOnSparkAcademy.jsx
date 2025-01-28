@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import useAuth from "../hooks/useAuth";
 import Swal from "sweetalert2";
 import useAxiosPublic from "../hooks/useAxiosPublic";
+import { Helmet } from "react-helmet-async";
 
 const TeachOnSparkAcademy = () => {
   const { user } = useAuth();
@@ -125,6 +126,9 @@ const TeachOnSparkAcademy = () => {
 
   return (
     <div className="py-20 bg-gray-100 flex items-center justify-center">
+      <Helmet>
+        <title>Teach on Spark Academy | Spark Academy</title>
+      </Helmet>
       <div className="w-full max-w-4xl bg-white p-8 rounded-lg shadow-lg">
        
         <div className="text-center mb-8">

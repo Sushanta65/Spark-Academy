@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import useAuth from '../hooks/useAuth';
 import Swal from 'sweetalert2';
+import { Helmet } from 'react-helmet-async';
 
 const SignIn = () => {
   const {signInUser, googleSignIn, setLoading, setUser} = useAuth()
@@ -22,6 +23,7 @@ const navigate = useNavigate()
   const handleSubmit = (e) => {
     e.preventDefault();
     const {email, password} = formData;
+    
     signInUser(email, password)
     .then(data => {
                 setLoading(false)
@@ -52,6 +54,9 @@ const navigate = useNavigate()
 
   return (
     <div className="min-h-screen bg-gray-100 flex items-center justify-center">
+      <Helmet>
+              <title>Sign In | Spark Academy</title>
+            </Helmet>
       <div className="w-full max-w-md bg-white p-8 rounded-lg shadow-md">
         <h2 className="text-2xl font-bold text-center mb-4" style={{ color: '#0D9488' }}>
           Welcome Back to Spark Academy

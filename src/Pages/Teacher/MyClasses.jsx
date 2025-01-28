@@ -4,6 +4,7 @@ import Swal from "sweetalert2";
 import useAxiosPublic from "../../hooks/useAxiosPublic";
 import useAuth from "../../hooks/useAuth";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
+import { Helmet } from "react-helmet-async";
 
 const MyClasses = () => {
   const { user, userRole } = useAuth();
@@ -70,6 +71,9 @@ const MyClasses = () => {
 
   return (
     <div className="min-h-screen  p-4">
+      <Helmet>
+              <title>My Classes | Spark Academy</title>
+            </Helmet>
       <div className="max-w-6xl mx-auto">
         <h1 className="text-2xl font-bold text-teal-600 mb-6 text-center">
           My Classes

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { FaCheck, FaTimes } from "react-icons/fa"; // Using react-icons for status icons
 import useAxiosSecure from "../../hooks/useAxiosSecure";
 import useAuth from "../../hooks/useAuth";
+import { Helmet } from "react-helmet-async";
 
 const PaymentHistory = () => {
   const { user } = useAuth();
@@ -16,6 +17,9 @@ const PaymentHistory = () => {
 
   return (
     <div className="container mx-auto p-6">
+      <Helmet>
+        <title>Payment History | Spark Academy</title>
+      </Helmet>
       <h2 className="text-3xl font-semibold mb-6 text-center text-teal-700">
         Payment History
       </h2>

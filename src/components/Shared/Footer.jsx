@@ -3,22 +3,21 @@ import { FaFacebook, FaTwitter, FaInstagram, FaLinkedin } from "react-icons/fa";
 
 const Footer = () => {
   return (
-    <footer className="bg-neutral text-neutral-content">
+    <footer className="bg-neutral text-neutral-content my-10">
       <div className="container mx-auto py-10 px-6">
-        {/* Top Section */}
         <div className="flex flex-col lg:flex-row justify-between items-center gap-6 border-b border-gray-700 pb-6 mb-6">
-          {/* Brand Section */}
           <div className="flex flex-col items-center lg:items-start">
             <h2 className="text-3xl font-bold text-teal-400">Spark Academy</h2>
             <p className="mt-2 text-center lg:text-left text-gray-300">
-              Empowering education through innovative class management solutions.
-              Join us to ignite your learning journey!
+              Empowering education through innovative class management
+              solutions. Join us to ignite your learning journey!
             </p>
           </div>
 
-          {/* Quick Links */}
           <div className="flex flex-col items-center lg:items-start">
-            <h3 className="font-semibold text-lg mb-3 text-gray-100">Quick Links</h3>
+            <h3 className="font-semibold text-lg mb-3 text-gray-100">
+              Quick Links
+            </h3>
             <ul className="space-y-2">
               <li>
                 <a href="/" className="hover:text-teal-400">
@@ -43,7 +42,6 @@ const Footer = () => {
             </ul>
           </div>
 
-          {/* Social Media */}
           <div className="flex flex-col items-center">
             <h3 className="font-semibold text-lg mb-3 text-gray-100">
               Follow Us
@@ -85,10 +83,10 @@ const Footer = () => {
           </div>
         </div>
 
-        {/* Bottom Section */}
         <div className="text-center text-sm text-gray-500">
           <p>
-            &copy; {new Date().getFullYear()} Spark Academy. All rights reserved.
+            &copy; {new Date().getFullYear()} Spark Academy. All rights
+            reserved.
           </p>
         </div>
       </div>

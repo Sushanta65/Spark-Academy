@@ -17,7 +17,7 @@ const partners = [
   { name: 'Apple', icon: <FaApple size={50} /> },
   { name: 'Spotify', icon: <FaSpotify size={50} /> },
   { name: 'Vimeo', icon: <FaVimeo size={50} /> },
-  // Add more partners as needed
+  
 ];
 
 const PartnerSection = () => {
@@ -34,7 +34,7 @@ const PartnerSection = () => {
           </div>
         </div>
 
-        {/* Marquee for partner logos */}
+       
         <div className="overflow-hidden">
           
         <Marquee gradient={false} speed={30} className="flex space-x-8 py-5">

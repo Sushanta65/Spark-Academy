@@ -3,6 +3,7 @@ import { useParams, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import useAxiosPublic from "../../hooks/useAxiosPublic";
 import useAuth from "../../hooks/useAuth";
+import { Helmet } from "react-helmet-async";
 
 const UpdateClass = () => {
   const { id } = useParams();
@@ -95,6 +96,9 @@ const UpdateClass = () => {
 
   return (
     <div className="min-h-screen bg-gray-100 p-4 flex items-center justify-center">
+      <Helmet>
+              <title>Update Class | Spark Academy</title>
+            </Helmet>
       <div className="w-full max-w-4xl bg-white rounded-lg shadow-md p-6">
         <h2 className="text-2xl font-bold text-teal-600 mb-6 text-center">
           Update Class Details

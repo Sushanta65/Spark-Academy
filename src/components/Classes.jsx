@@ -1,6 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import { Link } from "react-router-dom";
 import { axiosPublic } from "../hooks/useAxiosPublic";
+import { Helmet } from "react-helmet-async";
 
 const Classes = () => {
   const {
@@ -20,6 +21,9 @@ const Classes = () => {
 
   return (
     <div className="container mx-auto min-h-screen py-12 px-6">
+      <Helmet>
+        <title>Classes | Spark Academy</title>
+      </Helmet>
       <header className="bg-gradient-to-r from-teal-500 to-cyan-500 text-white py-12 rounded-lg shadow-lg text-center mb-12">
         <h1 className="text-4xl font-extrabold mb-4">Explore Classes</h1>
         <p className="text-lg font-medium">

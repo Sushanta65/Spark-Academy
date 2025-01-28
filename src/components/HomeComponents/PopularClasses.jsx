@@ -10,7 +10,7 @@ import { Autoplay } from "swiper/modules";
 import { axiosSecure } from "../../hooks/useAxiosSecure";
 
 const PopularClasses = () => {
-  const { data: classes = [], isLoading, isError } = useQuery({
+  const { data: classes = [], } = useQuery({
     queryKey: ["popularClasses"],
     queryFn: async () => {
       const { data } = await axiosSecure.get("/teacher-classes");
@@ -18,8 +18,7 @@ const PopularClasses = () => {
     },
   });
 
-  if (isLoading) return <p>Loading...</p>;
-  if (isError) return <p>Data Not Found.</p>;
+
 
   return (
     <section className="py-20 mt-24 bg-white">
@@ -36,21 +35,21 @@ const PopularClasses = () => {
           </div>
         </div>
 
-        {/* Swiper Slider for Popular Classes */}
+        
         <Swiper
-          spaceBetween={20} // Space between slides
-          slidesPerView={1} // Default: Show 1 item at once on mobile
+          spaceBetween={20} 
+          slidesPerView={1} 
           autoplay={{ delay: 2000, disableOnInteraction: false }}
           modules={[Autoplay]}
           breakpoints={{
             640: {
-              slidesPerView: 1, // Show 1 item on small screens (mobile)
+              slidesPerView: 1,
             },
             768: {
-              slidesPerView: 2, // Show 2 items on medium screens (tablets)
+              slidesPerView: 2, 
             },
             1024: {
-              slidesPerView: 3, // Show 3 items on large screens (desktops)
+              slidesPerView: 3, 
             },
           }}
         >
