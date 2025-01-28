@@ -64,5 +64,4 @@ Access the live website here: [Spark Academy](#) (*https://spark-academy-server.
 ## Contribution
 Contributions are welcome! Feel free to fork the project and submit a pull request.
 
-## License
-This project is licensed under the MIT License. See the LICENSE file for details.
+## Thanks For Learning.
