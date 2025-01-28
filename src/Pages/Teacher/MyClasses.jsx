@@ -86,11 +86,14 @@ const MyClasses = () => {
                 className="rounded-lg mb-4 w-full h-40 object-cover"
               />
               <h2 className="text-lg font-bold text-teal-600">{cls.title}</h2>
+                <p className="text-gray-700"><strong>Name:</strong> {cls.name}</p>
+                <p className="text-gray-700"><strong>Email:</strong> {cls.email}</p>
               <p className="text-gray-700">
                 <strong>Price:</strong> ${cls.price}
               </p>
               <p className="text-gray-700">
                 <strong>Status:</strong>{" "}
+                
                 <span
                   className={`font-bold ${
                     cls.status === "pending"

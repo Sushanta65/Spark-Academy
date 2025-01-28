@@ -94,11 +94,11 @@ const ClassesAdmin = () => {
    }
 
   return (
-    <div className="min-h-screen bg-gray-100 p-4">
-  <div className="max mx-auto bg-white shadow rounded-lg p-4">
-    <h1 className="text-lg font-bold text-teal-600 mb-4 text-center">All Classes</h1>
+    <div className="min-h-screen  p-4">
+  <div className="max mx-auto  p-4">
+    <h1 className="text-3xl font-bold text-teal-600 mb-4 text-center ">All Classes</h1>
     <div className="overflow-x-auto">
-      <table className="table-auto w-full border-collapse bg-gray-50 text-sm">
+      {classes.length > 0 ? <table className="table-auto w-full border-collapse bg-gray-50 text-sm mt-10">
         <thead className="bg-teal-600  text-white">
           <tr>
             <th className="px-3 py-2">No</th>
@@ -167,7 +167,12 @@ const ClassesAdmin = () => {
             </tr>
           ))}
         </tbody>
-      </table>
+      </table> : <div >
+            <div>
+              <h2 className="w-full text-2xl text-center py-10 text-teal-700">No Classes Found</h2>
+            </div>
+        
+        </div>}
     </div>
   </div>
 </div>

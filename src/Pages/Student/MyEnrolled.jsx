@@ -17,7 +17,10 @@ const MyEnrolled = () => {
   }, [axiosSecure, user.email]);
 
   return (
-    <div className="min-h-screen py-10 px-6">
+    <div className="min-h-screen px-6">
+      <div className="w-full text-right py-5">
+        <Link className="px-4 py-2 bg-teal-600 rounded-xl text-sm text-white my-10 hover:bg-teal-800 duration-300" to='/dashboard/payment-history'>Payment History</Link>
+      </div>
       <h2 className="text-3xl font-bold text-center mb-8 text-teal-600">
         My Enrolled Classes
       </h2>

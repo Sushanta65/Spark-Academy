@@ -110,13 +110,13 @@ const TeacherRequest = () => {
    }
 
   return (
-    <div className=" bg-gray-100 p-4 flex items-center justify-center">
-    <div className="w-full  bg-white rounded-lg shadow-md p-4">
-      <h1 className="text-xl font-bold text-teal-600 mb-4 text-center">
+    <div className="  p-4 flex items-center justify-center">
+    <div className="w-full  p-4 mt-5">
+      <h1 className="text-3xl font-bold text-teal-600 mb-4 text-center ">
         Teacher Requests
       </h1>
 
-      <div className="overflow-x-auto">
+      <div className="overflow-x-auto mt-10">
         <table className="table-auto w-full text-sm border-collapse bg-gray-50">
           <thead className="bg-teal-600 text-white">
             <tr>

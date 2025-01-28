@@ -9,7 +9,8 @@ const Users = () => {
   const axiosSecure = useAxiosPublic();
   const {userRole} = useAuth()
   const navigate = useNavigate()
-  // Fetch users from the backend
+  const [search, setSearch] = useState('')
+
   useEffect(() => {
     axiosSecure.get("/users", {
       headers: {
@@ -52,25 +53,53 @@ const Users = () => {
       }
     });
   };
+  
+  useEffect(() => {
+    
+      try {
+        axiosSecure.get(`/users-search?search=${search}`)
+        .then(res => {
+          setUsers(res.data)
+          console.log(res.data)
+        })
+        
+      } catch (error) {
+        console.error("Error fetching users:", error);
+      }
+  
+
+  }, [search, axiosSecure]); 
+
 
   if(userRole === 'teacher' || userRole === 'student'){
     navigate('/dashboard')
     return
    }
 
+
+
+
   return (
     <div className="min-h-screen  p-4">
-      <div className="flex justify-between  mx-auto my-8 bg-white p-5 shadow-lg">
-        <div className="text-xl font-bold">Total User: <span className="text-teal-600"> {users.length}</span></div>
-        <div className="text-xl font-bold">Admin: <span className="text-teal-600">{users.filter(user => user.role === 'admin').length} </span></div>
-        <div></div>
-        
-      </div>
-      <h1 className="text-xl font-semibold text-teal-600 text-center mb-4">
+      <div className="flex justify-between items-center bg-white p-5 shadow-lg mb-4">
+  <div className="text-xl flex justify-between gap-20">
+  <div className="text-xl font-bold">Find User: <span className="text-teal-600"> {users.length}</span></div>
+  <div className="text-xl font-bold">Find Admin: <span className="text-teal-600">{users.filter(user => user.role === 'admin').length} </span></div>
+  </div>
+  <input
+    type="text"
+    placeholder="Search by name or email"
+    className="input input-bordered w-64"
+    value={search}
+    onChange={(e) => setSearch(e.target.value)}
+  />
+    </div>
+      
+      <h1 className="text-3xl font-semibold text-teal-600 text-center my-10 ">
         All Users
       </h1>
 
-      <div className="overflow-x-auto">
+      {users.length > 0? <div className="overflow-x-auto">
         <table className="table-auto w-full text-sm bg-white shadow-md rounded-lg">
           <thead className="bg-teal-600 text-white text-xs">
             <tr>
@@ -115,7 +144,12 @@ const Users = () => {
             ))}
           </tbody>
         </table>
-      </div>
+      </div> : <div >
+            <div>
+              <h2 className="w-full text-2xl text-center py-10 text-teal-700">No User Found</h2>
+            </div>
+        
+        </div>}
     </div>
   );
 };
