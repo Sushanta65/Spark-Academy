@@ -26,7 +26,7 @@ const Home = () => {
   return (
     <div>
       <Helmet>
-        <title>Home | My Website</title>
+        <title>Home | Spark Academy</title>
       </Helmet>
       <Banner></Banner>
       <PartnerSection></PartnerSection>

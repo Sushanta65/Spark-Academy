@@ -20,6 +20,7 @@ import Payment from "../Pages/Payment/Payment";
 import MyEnrolled from "../Pages/Student/MyEnrolled";
 import MyEnrollClassDetails from "../Pages/Student/MyEnrollClassDetails";
 import PaymentHistory from "../Pages/Student/PaymentHistory";
+import NotFoundPage from "../Pages/NotFoundPage";
 
 
 const router = createBrowserRouter([
@@ -105,6 +106,10 @@ const router = createBrowserRouter([
             {
                 path: '/class/payment/:id',
                 element: <PrivateRoute><Payment></Payment></PrivateRoute>
+            },
+            {
+                path:'*',
+                element: <NotFoundPage></NotFoundPage>
             }
         ]
     }
