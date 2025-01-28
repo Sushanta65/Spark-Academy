@@ -7,7 +7,7 @@ Welcome to **Spark Academy**, a platform dedicated to revolutionizing the intera
 - **Password**: `Susanto$400D`
 
 ## Live Website
-Access the live website here: [Spark Academy](#) (*https://spark-academy-server.vercel.app/*)
+Access the live website here: [Spark Academy](#) *https://spark-academy-c25ed.web.app/*
 
 ## Website Features
 1. **User Roles**:
