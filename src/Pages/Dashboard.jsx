@@ -129,17 +129,7 @@ const Dashboard = () => {
           Logout
         </button>
       </li>
-      {
-        userRole === "student" && <li className="bg-teal-800">
-        <Link
-          to='dashboard/payment-history'
-          className="btn btn-sm w-full rounded-none bg-teal-800 border-none text-white hover:bg-teal-900 flex items-center justify-center gap-2"
-        >
-          <FaSignOutAlt className="text-white" />
-          Payment History
-        </Link>
-      </li>
-      }
+      
     </div>
         </ul>
       </div>
