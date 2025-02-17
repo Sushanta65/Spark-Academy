@@ -25,10 +25,10 @@ const Navbar = () => {
   return (
     <>
       {userRole === "admin" || (
-        <div className="navbar bg-white z-50 w-full">
+        <div className="navbar bg-teal-600 text-white z-50 w-full fixed top-0 right-0 ">
           <div className="container mx-auto flex justify-between items-center">
             <div className="flex items-center">
-              <span className="text-xl font-bold text-teal-600">
+              <span className="text-xl font-bold text-gray-200">
                 Spark Academy
               </span>
             </div>
@@ -42,7 +42,7 @@ const Navbar = () => {
                       className={({ isActive }) =>
                         isActive
                           ? "text-white bg-teal-600 rounded-lg px-4 py-2"
-                          : "text-gray-700 hover:bg-teal-600 hover:text-white rounded-lg px-4 py-2 duration-500"
+                          : "text-gray-300 hover:bg-teal-600 hover:text-white rounded-lg px-4 py-2 duration-500"
                       }
                     >
                       {link.name}

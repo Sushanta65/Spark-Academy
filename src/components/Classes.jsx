@@ -20,7 +20,7 @@ const Classes = () => {
   if (isError) return <p>Failed to load classes. Please try again later.</p>;
 
   return (
-    <div className="container mx-auto min-h-screen py-12 px-6">
+    <div className="container mx-auto min-h-screen py-12 p">
       <Helmet>
         <title>Classes | Spark Academy</title>
       </Helmet>
