@@ -8,6 +8,7 @@ import {
   FaPlus,
   FaBook,
   FaSignOutAlt,
+  FaChartBar,
 } from "react-icons/fa";
 import useAuth from "../hooks/useAuth";
 import { Helmet } from "react-helmet-async";
@@ -35,6 +36,11 @@ const Dashboard = () => {
             name: "My Profile",
             icon: <FaUser />,
           },
+          {
+            path:'/dashboard/overview',
+            name: "Overview",
+            icon: <FaChartBar></FaChartBar>
+          }
         ]
       : []),
 
@@ -55,6 +61,11 @@ const Dashboard = () => {
             name: "My Profile",
             icon: <FaUser />,
           },
+          {
+            path:'/dashboard/overview',
+            name: "Overview",
+            icon: <FaChartBar></FaChartBar>
+          }
         ]
       : []),
 
@@ -70,6 +81,11 @@ const Dashboard = () => {
             name: "My Profile",
             icon: <FaUser />,
           },
+          {
+            path:'/dashboard/overview',
+            name: "Overview",
+            icon: <FaChartBar></FaChartBar>
+          }
         ]
       : []),
 

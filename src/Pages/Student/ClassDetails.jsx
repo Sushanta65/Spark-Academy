@@ -4,6 +4,7 @@ import { Link, useParams } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
 import useAuth from "../../hooks/useAuth";
+import Loading from "../../components/Loading";
 
 const ClassDetails = () => {
   const { id } = useParams();
@@ -18,7 +19,7 @@ const ClassDetails = () => {
     },
   });
 
-  if (isLoading) return <div>Loading...</div>;
+  if (isLoading) return <Loading/>
   if (isError) return <div>Error loading class details.</div>;
 
   setClassItem(classInfo);

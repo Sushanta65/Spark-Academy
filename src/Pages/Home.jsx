@@ -11,16 +11,17 @@ import Banner from "../components/HomeComponents/Banner";
 import FeaturedCourses from "../components/HomeComponents/Blogs";
 import FAQs from "../components/HomeComponents/FAQs";
 import { Helmet } from "react-helmet-async";
+import Loading from "../components/Loading";
 
 const Home = () => {
   const { userRole, loading } = useAuth();
   const navigate = useNavigate();
 
   if (loading) {
-    return <div>Loading</div>;
+    return <Loading/>;
   }
   if (userRole === "admin") {
-    navigate("/dashboard/my-profile");
+    navigate("/dashboard/overview");
   }
 
   return (

@@ -22,6 +22,7 @@ import MyEnrollClassDetails from "../Pages/Student/MyEnrollClassDetails";
 import PaymentHistory from "../Pages/Student/PaymentHistory";
 import NotFoundPage from "../Pages/NotFoundPage";
 import AboutUs from "../Pages/AboutUs";
+import DashboardOverview from "../Pages/DashboardPages/DashboardOverview";
 
 
 const router = createBrowserRouter([
@@ -88,6 +89,10 @@ const router = createBrowserRouter([
                     {
                         path: '/dashboard/payment-history',
                         element: <PaymentHistory></PaymentHistory>
+                    },
+                    {
+                        path: '/dashboard/overview',
+                        element: <DashboardOverview></DashboardOverview>
                     }
                     
                 ]

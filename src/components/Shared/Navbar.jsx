@@ -15,7 +15,7 @@ const Navbar = () => {
   ];
 
   if (user?.email) {
-    links.push({ name: "Dashboard", path: "/dashboard/my-profile" });
+    links.push({ name: "Dashboard", path: "/dashboard/overview" });
   } else {
     links.push(
       { name: "Sign In", path: "/signin" },
