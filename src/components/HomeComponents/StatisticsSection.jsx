@@ -17,7 +17,7 @@ const StatisticsSection = () => {
 
 
   return (
-    <div className="py-12 my-20 w-full">
+    <div className="py-20 w-full">
       <div className="container mx-auto flex flex-col md:flex-row items-center gap-8">
         <div className="flex-1 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-1 gap-6">
           <div className="card bg-white shadow-lg rounded-lg p-3 flex items-center gap-4">

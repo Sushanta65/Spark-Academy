@@ -4,7 +4,7 @@ import inspireImg from '../../assets/inspire.png'
 
 const InspireTeachersSection = () => {
   return (
-    <section className="bg-gradient-to-r from-teal-500 to-teal-600 text-white pt-16 pb-16 mb-16 w-full">
+    <section className="bg-gradient-to-r from-teal-500 to-teal-600 text-white pt-16 pb-16  w-full">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col lg:flex-row items-center space-x-8">
        
         <div className="w-full lg:w-1/2">

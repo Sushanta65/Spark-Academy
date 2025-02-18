@@ -32,8 +32,8 @@ const Blogs = () => {
   ];
 
   return (
-    <div className="py-20 px-6 bg-gray-100">
-      <div className="container mx-auto max-w-6xl">
+    <div className="py-20 bg-white px-20">
+      <div className="container mx-auto">
         <div className="text-center pb-20">
           <div className="">
             <h2 className="text-4xl font-semibold text-teal-600 px-4">

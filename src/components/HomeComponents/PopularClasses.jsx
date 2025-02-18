@@ -19,7 +19,7 @@ const PopularClasses = () => {
   });
 
   return (
-    <section className="py-20 mt-24 bg-gray-50">
+    <section className="py-20  bg-gray-50">
       <div className="container mx-auto px-4">
         <div className="text-center pb-16">
           <h2 className="text-4xl font-semibold text-teal-600">
