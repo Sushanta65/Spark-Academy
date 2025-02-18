@@ -16,7 +16,7 @@ const Classes = () => {
     },
   });
 
-  if (isLoading) return <p>Loading classes...</p>;
+  if (isLoading) return <>Loading...</>
   if (isError) return <p>Failed to load classes. Please try again later.</p>;
 
   return (
@@ -31,7 +31,7 @@ const Classes = () => {
         </p>
       </header>
 
-      <div className="container mx-auto">
+      <div className="w-4/5 mx-auto">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
           {classes
             .filter((cls) => cls.status === "approved")

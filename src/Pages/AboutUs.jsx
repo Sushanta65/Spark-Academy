@@ -3,34 +3,76 @@ import { Helmet } from 'react-helmet-async';
 
 const AboutUs = () => {
   return (
-    <div className="min-h-screen bg-gray-50 flex flex-col items-center justify-center px-6 py-12">
+    <div className="min-h-screen bg-gray-50 py-12">
       <Helmet>
         <title>About Us | Spark Academy</title>
       </Helmet>
-      <div className="max-w-6xl w-full bg-white rounded-xl shadow-xl p-12 flex flex-col md:flex-row gap-12 items-center">
-        {/* Left Section */}
-        <div className="md:w-1/2 text-center md:text-left">
-          <h2 className="text-4xl font-extrabold text-teal-700 mb-6">Empowering Education for the Future</h2>
-          <p className="text-gray-600 leading-relaxed">
-            Spark Academy is dedicated to transforming education by leveraging technology to make learning more accessible, engaging, and effective. Our platform empowers students, educators, and institutions with cutting-edge tools designed for a modern learning experience.
+      <div className="max-w-7xl mx-auto px-6">
+        {/* Hero Section */}
+        <div className="text-center mb-16">
+          <h1 className="text-5xl font-extrabold text-teal-700 mb-4">About Spark Academy</h1>
+          <p className="text-gray-600 text-lg max-w-3xl mx-auto">
+            Spark Academy is a cutting-edge educational platform designed to make learning accessible, engaging, and innovative for students and educators worldwide.
           </p>
-          <div className="mt-6 flex gap-4 justify-center md:justify-start">
-            <button className="bg-teal-700 text-white px-6 py-3 rounded-lg shadow-md hover:bg-teal-800 transition">Join Us</button>
-            <button className="border border-teal-700 text-teal-700 px-6 py-3 rounded-lg shadow-md hover:bg-teal-700 hover:text-white transition">Learn More</button>
+        </div>
+
+        {/* Our Mission, Vision, and Values */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
+          <div className="p-8 bg-white rounded-lg shadow-md text-center border-t-4 border-teal-700">
+            <h3 className="text-2xl font-semibold text-teal-700 mb-3">Our Mission</h3>
+            <p className="text-gray-600">Empowering students with high-quality education using modern technology and interactive tools.</p>
+          </div>
+          <div className="p-8 bg-white rounded-lg shadow-md text-center border-t-4 border-teal-700">
+            <h3 className="text-2xl font-semibold text-teal-700 mb-3">Our Vision</h3>
+            <p className="text-gray-600">To become a global leader in online education by fostering creativity, innovation, and knowledge.</p>
+          </div>
+          <div className="p-8 bg-white rounded-lg shadow-md text-center border-t-4 border-teal-700">
+            <h3 className="text-2xl font-semibold text-teal-700 mb-3">Our Values</h3>
+            <p className="text-gray-600">Innovation, accessibility, quality, and student-centered learning are the core of our approach.</p>
           </div>
         </div>
-        
-        {/* Right Section */}
-        <div className="md:w-1/2 grid grid-cols-1 md:grid-cols-2 gap-6">
-          <div className="p-6 bg-teal-700 text-white rounded-lg shadow-md text-center">
-            <h3 className="text-xl font-semibold mb-2">Our Mission</h3>
-            <p>Providing top-tier educational resources and fostering a lifelong learning culture.</p>
+
+        {/* Why Choose Us */}
+        <div className="text-center mb-16">
+          <h2 className="text-4xl font-bold text-teal-700 mb-6">Why Choose Spark Academy?</h2>
+          <p className="text-gray-600 max-w-3xl mx-auto">
+            We offer an advanced learning platform with expert instructors, real-world projects, and a collaborative community to help students achieve success.
+          </p>
+        </div>
+
+        {/* Features */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="p-6 bg-white rounded-lg shadow-md text-center">
+            <h4 className="text-xl font-semibold text-teal-700 mb-3">Expert Instructors</h4>
+            <p className="text-gray-600">Learn from the best educators with years of experience.</p>
           </div>
-          <div className="p-6 bg-teal-700 text-white rounded-lg shadow-md text-center">
-            <h3 className="text-xl font-semibold mb-2">Our Vision</h3>
-            <p>Revolutionizing education with cutting-edge technology and interactive learning.</p>
+          <div className="p-6 bg-white rounded-lg shadow-md text-center">
+            <h4 className="text-xl font-semibold text-teal-700 mb-3">Interactive Learning</h4>
+            <p className="text-gray-600">Engage in real-world projects, quizzes, and collaborative sessions.</p>
           </div>
-          
+          <div className="p-6 bg-white rounded-lg shadow-md text-center">
+            <h4 className="text-xl font-semibold text-teal-700 mb-3">Flexible Courses</h4>
+            <p className="text-gray-600">Learn at your own pace with our flexible course structures.</p>
+          </div>
+          <div className="p-6 bg-white rounded-lg shadow-md text-center">
+            <h4 className="text-xl font-semibold text-teal-700 mb-3">Community Support</h4>
+            <p className="text-gray-600">Join a network of learners and professionals for guidance and mentorship.</p>
+          </div>
+          <div className="p-6 bg-white rounded-lg shadow-md text-center">
+            <h4 className="text-xl font-semibold text-teal-700 mb-3">Career Opportunities</h4>
+            <p className="text-gray-600">Get career guidance and placement assistance.</p>
+          </div>
+          <div className="p-6 bg-white rounded-lg shadow-md text-center">
+            <h4 className="text-xl font-semibold text-teal-700 mb-3">Certification</h4>
+            <p className="text-gray-600">Earn industry-recognized certificates upon course completion.</p>
+          </div>
+        </div>
+
+        {/* Call to Action */}
+        <div className="text-center mt-16">
+          <h2 className="text-4xl font-bold text-teal-700 mb-4">Join Spark Academy Today!</h2>
+          <p className="text-gray-600 max-w-2xl mx-auto mb-6">Start your learning journey with us and gain the skills you need for a successful future.</p>
+          <button className="bg-teal-700 text-white px-8 py-3 rounded-lg shadow-md text-lg font-semibold hover:bg-teal-800 transition">Get Started</button>
         </div>
       </div>
     </div>
