@@ -11,6 +11,7 @@ const Navbar = () => {
     { name: "Home", path: "/" },
     { name: "All Classes", path: "/classes" },
     { name: "Teach on Spark Academy", path: "/teach-on-spark-academy" },
+    {name: "About Us", path: "/aboutUs"}
   ];
 
   if (user?.email) {
