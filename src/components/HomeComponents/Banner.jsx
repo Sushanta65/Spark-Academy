@@ -7,6 +7,7 @@ import "swiper/css/navigation";
 import banner1 from '../../assets/banner-1.png'
 import banner2 from '../../assets/banner-2.png'
 import banner3 from '../../assets/banner-3.png'
+import { Link } from "react-router-dom";
 
 const Banner = () => {
   // Data for the sliders
@@ -17,6 +18,7 @@ const Banner = () => {
       title: "Empowering Students for a Brighter Future",
       description: "Explore resources, classes, and opportunities to learn and grow.",
       buttonText: "Explore Now",
+      path: '/classes'
     },
     {
       id: 2,
@@ -24,6 +26,7 @@ const Banner = () => {
       title: "Inspiring Teachers, Inspiring Lives",
       description: "Join a community of educators making a difference.",
       buttonText: "Join as a Teacher",
+      path: '/teach-on-spark-academy'
     },
     {
       id: 3,
@@ -31,6 +34,7 @@ const Banner = () => {
       title: "Learn, Teach, and Grow Together",
       description: "Start your journey of teaching and learning today.",
       buttonText: "Get Started",
+      path: '/classes'
     },
   ];
 
@@ -60,9 +64,11 @@ const Banner = () => {
                     {slide.title}
                   </h1>
                   <p className="text-lg text-gray-300 my-10">{slide.description}</p>
+                  <Link to={slide.path}>
                   <button className="btn bg-teal-500 text-white hover:bg-teal-600">
                     {slide.buttonText}
                   </button>
+                  </Link>
                 </div>
               </div>
             </div>

@@ -3,6 +3,7 @@ import { FaUserCircle } from "react-icons/fa";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
 import useAuth from "../../hooks/useAuth";
 import { Helmet } from "react-helmet-async";
+import Loading from "../../components/Loading";
 
 const MyProfile = () => {
   const { user } = useAuth();
@@ -23,7 +24,7 @@ const MyProfile = () => {
   if (!userInfo) {
     return (
       <div className="flex justify-center items-center h-screen">
-        Loading...
+       <Loading/>
       </div>
     );
   }
