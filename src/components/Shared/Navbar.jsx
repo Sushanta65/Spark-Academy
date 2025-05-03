@@ -1,17 +1,16 @@
-import React, { useState } from "react";
-import { NavLink, useLocation } from "react-router-dom";
+import React from "react";
+import { NavLink } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
 import userImg from "../../assets/user.png";
 
 const Navbar = () => {
   const { user, signOutUser, userRole } = useAuth();
 
-  "From navbar", user;
   const links = [
     { name: "Home", path: "/" },
     { name: "All Classes", path: "/classes" },
     { name: "Teach on Spark Academy", path: "/teach-on-spark-academy" },
-    {name: "About Us", path: "/aboutUs"}
+    { name: "About Us", path: "/aboutUs" },
   ];
 
   if (user?.email) {
@@ -23,53 +22,47 @@ const Navbar = () => {
     );
   }
 
+  const linkClass =
+    "px-4 py-2 rounded-md text-sm font-medium transition-colors duration-300";
+  const activeClass = "bg-white text-teal-600";
+  const inactiveClass = "text-white hover:bg-white hover:text-teal-600";
+
   return (
     <>
-      {userRole === "admin" || (
-        <div className="navbar bg-teal-600 text-white z-50 w-full fixed top-0 right-0 ">
-          <div className="container mx-auto flex justify-between items-center">
-            <div className="flex items-center">
-              <span className="text-xl font-bold text-gray-200">
-                Spark Academy
-              </span>
-            </div>
+      {userRole !== "admin" && (
+        <div className="navbar bg-teal-600 text-white fixed top-0 w-full z-50">
+          <div className="container mx-auto flex justify-between items-center px-4 py-2">
+            <span className="text-xl font-bold">Spark Academy</span>
 
             <div className="hidden lg:flex">
-              <ul className="menu menu-horizontal px-1 gap-3">
+              <ul className="flex gap-3 items-center">
                 {links.map((link) => (
-                  <li key={link.path} className="text-[13px]">
+                  <li key={link.path}>
                     <NavLink
                       to={link.path}
                       className={({ isActive }) =>
-                        isActive
-                          ? "text-white bg-teal-600 rounded-lg px-4 py-2"
-                          : "text-gray-300 hover:bg-teal-600 hover:text-white rounded-lg px-4 py-2 duration-500"
+                        `${linkClass} ${isActive ? activeClass : inactiveClass}`
                       }
                     >
                       {link.name}
                     </NavLink>
                   </li>
                 ))}
-
                 {user?.email && (
-                  <li className="dropdown dropdown-hover relative z-50">
+                  <li className="relative group">
                     <img
-                      className="w-10 p-0 rounded-full cursor-pointer"
-                      src={user.photoURL ? user.photoURL : userImg}
-                      alt=""
-                      tabIndex={0}
+                      src={user.photoURL || userImg}
+                      alt="User"
+                      className="w-10 h-10 rounded-full cursor-pointer"
                     />
-                    <ul
-                      tabIndex={0}
-                      className="dropdown-content menu p-2 shadow bg-white  w-52  absolute right-0"
-                    >
-                      <li className="text-gray-700 font-semibold px-4 py-2">
+                    <ul className="absolute right-0 mt- hidden group-hover:block bg-white text-gray-800 shadow rounded-md w-48 z-50">
+                      <li className="px-4 py-2 font-semibold">
                         {user.displayName}
                       </li>
                       <li>
                         <button
                           onClick={signOutUser}
-                          className="text-gray-700 hover:bg-teal-600 hover:text-white px-4 py-2 rounded-lg duration-300"
+                          className="w-full text-left px-4 py-2 hover:bg-teal-600 hover:text-white rounded-b-md"
                         >
                           Logout
                         </button>
@@ -80,11 +73,10 @@ const Navbar = () => {
               </ul>
             </div>
 
-            <div className="dropdown lg:hidden">
-              <label tabIndex={0} className="btn btn-ghost lg:hidden">
+            <div className="lg:hidden dropdown">
+              <label tabIndex={0} className="btn btn-ghost text-white">
                 <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  className="h-5 w-5"
+                  className="h-6 w-6"
                   fill="none"
                   viewBox="0 0 24 24"
                   stroke="currentColor"
@@ -92,35 +84,36 @@ const Navbar = () => {
                   <path
                     strokeLinecap="round"
                     strokeLinejoin="round"
-                    strokeWidth={2}
+                    strokeWidth="2"
                     d="M4 6h16M4 12h16m-7 6h7"
                   />
                 </svg>
               </label>
               <ul
                 tabIndex={0}
-                className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-white rounded-box w-52 right-5 z-50"
+                className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-white rounded-box w-52 right-0 absolute z-50"
               >
                 {links.map((link) => (
                   <li key={link.path}>
                     <NavLink
                       to={link.path}
                       className={({ isActive }) =>
-                        isActive
-                          ? "text-white bg-teal-600 hover:bg-teal-600 rounded-lg px-4 py-2"
-                          : "text-gray-700 hover:bg-teal-600 hover:text-white rounded-lg px-4 py-2"
+                        `${linkClass} ${
+                          isActive
+                            ? "bg-teal-600 text-white"
+                            : "text-gray-800 hover:bg-teal-600 hover:text-white"
+                        }`
                       }
                     >
                       {link.name}
                     </NavLink>
                   </li>
                 ))}
-
                 {user?.email && (
                   <li>
                     <button
-                      className="text-gray-700 hover:bg-teal-600 hover:text-white px-4 py-2 rounded-lg duration-300"
                       onClick={signOutUser}
+                      className="w-full text-left px-4 py-2 text-gray-800 hover:bg-teal-600 hover:text-white rounded-md"
                     >
                       Logout
                     </button>
